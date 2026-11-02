@@ -45,7 +45,17 @@ function Navbar() {
 
   const location = useLocation();
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
+  // Close mobile navigation on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  const closeMenu = () => setIsOpen(false);
+
+  // The admin area has its own navigation shell.
+  if (location.pathname.startsWith("/admin")) return null;
 
   // CONTACT NAVBAR CLICK
   const handleContactClick = () => {
@@ -106,10 +116,9 @@ function Navbar() {
         <button
           className="navbar-toggler border-0"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarMain"
+          onClick={() => setIsOpen((prev) => !prev)}
           aria-controls="navbarMain"
-          aria-expanded="false"
+          aria-expanded={isOpen}
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
@@ -117,7 +126,7 @@ function Navbar() {
 
         {/* NAVBAR CONTENT */}
         <div
-          className="collapse navbar-collapse"
+          className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}
           id="navbarMain"
         >
 
@@ -129,6 +138,7 @@ function Navbar() {
               <NavLink
                 className="nav-link px-3"
                 to="/"
+                onClick={closeMenu}
               >
                 Home
               </NavLink>
@@ -139,6 +149,7 @@ function Navbar() {
               <NavLink
                 className="nav-link px-3"
                 to="/products"
+                onClick={closeMenu}
               >
                 Products
               </NavLink>
@@ -149,6 +160,7 @@ function Navbar() {
               <NavLink
                 className="nav-link px-3"
                 to="/offers"
+                onClick={closeMenu}
               >
                 Offers
               </NavLink>
@@ -159,6 +171,7 @@ function Navbar() {
               <NavLink
                 className="nav-link px-3"
                 to="/about"
+                onClick={closeMenu}
               >
                 About
               </NavLink>
@@ -174,7 +187,10 @@ function Navbar() {
                     ? "active"
                     : ""
                 }`}
-                onClick={handleContactClick}
+                onClick={() => {
+                  closeMenu();
+                  handleContactClick();
+                }}
               >
                 Contact
               </button>
@@ -190,6 +206,7 @@ function Navbar() {
               to="/account"
               className="nav-action-btn"
               aria-label="My Account"
+              onClick={closeMenu}
             >
               <i className="bi bi-person-circle"></i>
 
@@ -203,6 +220,7 @@ function Navbar() {
               to="/account/notifications"
               className="nav-action-btn position-relative"
               aria-label="Notifications"
+              onClick={closeMenu}
             >
               <i className="bi bi-bell"></i>
 
@@ -223,6 +241,7 @@ function Navbar() {
               to="/cart"
               className="nav-action-btn position-relative"
               aria-label="Shopping Cart"
+              onClick={closeMenu}
             >
               <i className="bi bi-cart3"></i>
 
@@ -236,6 +255,20 @@ function Navbar() {
                   {totalCartCount}
                 </span>
               )}
+            </Link>
+
+            {/* ADMIN PORTAL */}
+            <Link
+              to="/admin/dashboard"
+              className="nav-action-btn admin-nav-shortcut"
+              aria-label="Admin Portal"
+              title="Admin Dashboard"
+              onClick={closeMenu}
+            >
+              <i className="bi bi-shield-lock-fill text-success"></i>
+              <span className="action-text fw-semibold">
+                Admin
+              </span>
             </Link>
 
           </div>

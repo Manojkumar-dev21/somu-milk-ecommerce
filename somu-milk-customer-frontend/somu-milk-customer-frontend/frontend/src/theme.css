@@ -1000,3 +1000,124 @@ textarea {
     padding: 13px;
   }
 }
+
+/* =========================================================
+   COMPREHENSIVE RESPONSIVE DESIGN ENHANCEMENTS
+   Optimized for mobile (320px-480px), tablet (481px-768px),
+   laptop (769px-1024px), and desktop (1025px+).
+========================================================= */
+
+/* Prevent accidental horizontal overflow */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Smooth scrolling container for all tables */
+.table-responsive,
+.table-wrapper,
+.table-container,
+.orders-table-container,
+.products-table-container,
+.customers-table-container,
+.subscription-table-container,
+.recent-sales-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+}
+
+.orders-table,
+.products-table,
+.customers-table,
+.subscription-table,
+.recent-sales-table {
+  min-width: 660px;
+}
+
+/* Touch-friendly interactive elements */
+button, input, select, textarea, .btn, .nav-action-btn {
+  touch-action: manipulation;
+}
+
+/* Responsive Modals */
+@media (max-width: 768px) {
+  .modal-dialog {
+    max-width: 95vw !important;
+    margin: 12px auto !important;
+  }
+  .modal-content {
+    border-radius: 16px !important;
+  }
+  .modal-body {
+    max-height: 75vh;
+    overflow-y: auto;
+  }
+}
+
+/* Fluid grids and cards on tablets & mobile */
+@media (max-width: 768px) {
+  .somu-admin-shell .stats-grid,
+  .product-summary,
+  .sales-summary {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .products-grid,
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+    gap: 16px !important;
+  }
+
+  .cart-grid,
+  .checkout-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .product-detail-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .somu-admin-shell .stats-grid,
+  .product-summary,
+  .sales-summary {
+    grid-template-columns: 1fr !important;
+  }
+
+  .products-grid,
+  .product-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  /* Full width action buttons on phones */
+  .add-to-cart-btn,
+  .checkout-btn,
+  .place-order-btn,
+  .save-product-btn {
+    width: 100% !important;
+    min-height: 44px !important;
+  }
+
+  /* Cart items cleanly stacked */
+  .cart-item-card {
+    padding: 14px 12px !important;
+  }
+
+  /* Form inputs touch-friendly */
+  input, select, textarea {
+    font-size: 16px !important; /* Prevents auto-zoom on iOS */
+  }
+
+  .btn, button {
+    min-height: 42px;
+  }
+}

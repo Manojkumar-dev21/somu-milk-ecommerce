@@ -141,6 +141,28 @@
 
 
 /* ================================
+   ADMIN SHORTCUT
+================================ */
+
+.admin-nav-shortcut {
+  background: #edf7ee !important;
+  border: 1px solid #c7e6c9 !important;
+  color: #1b5e20 !important;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.admin-nav-shortcut:hover {
+  background: #1b5e20 !important;
+  color: #ffffff !important;
+  border-color: #1b5e20 !important;
+}
+
+.admin-nav-shortcut:hover i {
+  color: #ffffff !important;
+}
+
+/* ================================
    CONTACT SECTION SCROLL
 ================================ */
 

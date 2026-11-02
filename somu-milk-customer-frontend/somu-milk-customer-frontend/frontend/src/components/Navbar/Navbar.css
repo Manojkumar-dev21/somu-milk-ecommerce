@@ -141,6 +141,28 @@
 
 
 /* ================================
+   ADMIN SHORTCUT
+================================ */
+
+.admin-nav-shortcut {
+  background: #edf7ee !important;
+  border: 1px solid #c7e6c9 !important;
+  color: #1b5e20 !important;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.admin-nav-shortcut:hover {
+  background: #1b5e20 !important;
+  color: #ffffff !important;
+  border-color: #1b5e20 !important;
+}
+
+.admin-nav-shortcut:hover i {
+  color: #ffffff !important;
+}
+
+/* ================================
    CONTACT SECTION SCROLL
 ================================ */
 
@@ -155,17 +177,43 @@
 
 @media (max-width: 991px) {
 
+  .navbar {
+    padding: 8px 0;
+  }
+
+  .navbar-logo {
+    height: 54px;
+    max-width: 160px;
+  }
+
+  .navbar-toggler {
+    padding: 6px 10px;
+    font-size: 1.25rem;
+    border-radius: 8px;
+    background: #f4f8f4;
+  }
+
   .navbar-collapse {
-    padding-top: 15px;
+    padding: 16px 8px 12px;
+    border-top: 1px solid #edf1ed;
+    margin-top: 8px;
   }
 
   .navbar-nav {
     align-items: flex-start !important;
+    gap: 2px !important;
   }
 
   .navbar-nav .nav-link {
     width: 100%;
-    padding: 10px 5px;
+    padding: 11px 14px;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:active {
+    background: #f1f8f1;
   }
 
   .navbar-nav .nav-link.active::after {
@@ -173,9 +221,30 @@
   }
 
   .navbar-actions {
-    margin-top: 10px;
-    padding-bottom: 10px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #edf1ed;
     justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px !important;
+  }
+
+  .nav-action-btn {
+    padding: 9px 14px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo {
+    height: 44px;
+    max-width: 130px;
+  }
+
+  .nav-action-btn {
+    padding: 8px 11px;
+    font-size: 12px;
   }
 }
 

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 
 import Navbar from "./components/Navbar/Navbar";
@@ -18,6 +18,13 @@ import Register from "./pages/CUSTOMER/Register/Register";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
+import Dashboard from "./pages/ADMIN/Dashboard/Dashboard";
+import ProductManagement from "./pages/ADMIN/Product Management/ProductManagement";
+import OrderManagement from "./pages/ADMIN/Order Management/OrderManagement";
+import CustomerManagement from "./pages/ADMIN/Customer Management/CustomerManagement";
+import SubscriptionManagement from "./pages/ADMIN/Subscription Management/SubscriptionManagement";
+import SalesProfit from "./pages/ADMIN/Sales & Profit/SalesProfit";
+import AdminLayout from "./layouts/AdminLayout";
 
 // Shared design theme (keep this LAST so it can refine page styles)
 import "./theme.css";
@@ -58,6 +65,19 @@ function App() {
               element={<ProtectedRoute><Notifications /></ProtectedRoute>}
             />
 
+            {/* ADMIN — operations layout */}
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="products" element={<ProductManagement />} />
+              <Route path="orders" element={<OrderManagement />} />
+              <Route path="customers" element={<CustomerManagement />} />
+              <Route path="subscriptions" element={<SubscriptionManagement />} />
+              <Route path="sales-profit" element={<SalesProfit />} />
+            </Route>
+
+            {/* Fallback to home */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>
       </CartProvider>

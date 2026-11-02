@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const db = require("./db/database");
+const { supabase, isSupabaseConfigured } = require("./db/supabaseClient");
 const productRoutes = require("./routes/productRoutes");
 const authRoutes = require("./routes/authRoutes");
 const customerRoutes = require("./routes/customerRoutes");
@@ -40,6 +41,7 @@ app.get("/", (req, res) => {
 // Health check with DB status and metrics
 app.get("/api/health", (req, res) => {
   const isMongoConnected = mongoose.connection.readyState === 1;
+  const isSupabase = isSupabaseConfigured();
   const productsCount = db.collection("products").find().length;
   const ordersCount = db.collection("orders").find().length;
   const customersCount = db.collection("customers").find().length;
@@ -47,10 +49,14 @@ app.get("/api/health", (req, res) => {
 
   res.json({
     status: "OK",
-    database: isMongoConnected
+    database: isSupabase
+      ? "Supabase Connected (PostgreSQL Cloud)"
+      : isMongoConnected
       ? "MongoDB Connected"
       : "Connected (Persistent Built-in JSON Database)",
-    persistence: "data/somu_milk_db.json",
+    persistence: isSupabase
+      ? "Supabase Cloud Database"
+      : "data/somu_milk_db.json",
     metrics: {
       products: productsCount,
       orders: ordersCount,

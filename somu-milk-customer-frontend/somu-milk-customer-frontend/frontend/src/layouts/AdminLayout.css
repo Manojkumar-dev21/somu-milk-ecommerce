@@ -1,0 +1,518 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+.somu-admin-shell {
+  --admin-ink: #17271f;
+  --admin-muted: #7b887f;
+  --admin-line: #e7ece6;
+  --admin-green: #1f6848;
+  --admin-green-dark: #174c36;
+  --admin-green-soft: #edf5ef;
+  display: flex;
+  min-height: calc(100vh - 0px);
+  color: var(--admin-ink);
+  background: #f7f9f6;
+  font-family: "DM Sans", sans-serif;
+  isolation: isolate;
+}
+.somu-admin-shell * { box-sizing: border-box; }
+.somu-admin-sidebar {
+  position: fixed;
+  z-index: 1050;
+  inset: 0 auto 0 0;
+  display: flex;
+  flex-direction: column;
+  width: 254px;
+  padding: 25px 16px 15px;
+  color: #eaf3ec;
+  background: #173c2d;
+  border-right: 1px solid rgba(255,255,255,.06);
+  overflow-y: auto;
+}
+.somu-admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 9px 25px;
+  color: inherit;
+  text-decoration: none;
+}
+.somu-admin-brand:hover { color: inherit; }
+.somu-admin-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  color: #194c35;
+  background: #d8f0d7;
+  font-size: 22px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.45);
+}
+.somu-admin-brand-copy { display: flex; flex-direction: column; line-height: 1; }
+.somu-admin-brand-copy strong {
+  font: 800 26px/1 "Manrope", sans-serif;
+  letter-spacing: -1.5px;
+}
+.somu-admin-brand-copy strong span { color: #bce3a7; }
+.somu-admin-brand-copy small {
+  margin-top: 6px;
+  color: #a6c5b2;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.somu-admin-workspace {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 11px;
+  margin-bottom: 28px;
+  border: 1px solid rgba(220,244,226,.13);
+  border-radius: 13px;
+  background: rgba(255,255,255,.055);
+}
+.somu-admin-workspace-avatar, .somu-admin-profile-avatar {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 35px;
+  height: 35px;
+  border-radius: 11px;
+  color: #1c573b;
+  background: #cce8c9;
+  font-weight: 800;
+}
+.somu-admin-workspace-copy, .somu-admin-profile-copy { display: flex; flex: 1; flex-direction: column; min-width: 0; }
+.somu-admin-workspace-copy strong, .somu-admin-profile-copy strong { color: #f4fbf5; font-size: 12px; font-weight: 700; }
+.somu-admin-workspace-copy small, .somu-admin-profile-copy small { margin-top: 4px; color: #a5c3b0; font-size: 10px; }
+.somu-admin-workspace > i { color: #a8c9b4; font-size: 14px; }
+.somu-admin-nav-group { margin-bottom: 25px; }
+.somu-admin-nav-label {
+  margin: 0 10px 10px;
+  color: #8fb19c;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+}
+.somu-admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 43px;
+  padding: 0 12px;
+  margin: 3px 0;
+  border-radius: 10px;
+  color: #bdd1c3;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background .18s ease, color .18s ease, transform .18s ease;
+}
+.somu-admin-nav-link > i { width: 18px; text-align: center; font-size: 16px; }
+.somu-admin-nav-link:hover { color: white; background: rgba(255,255,255,.075); transform: translateX(2px); }
+.somu-admin-nav-link.active {
+  color: #fff;
+  background: #2a6046;
+  box-shadow: inset 3px 0 #c8e9ae, 0 6px 16px rgba(5,25,15,.13);
+}
+.somu-admin-nav-tag {
+  margin-left: auto;
+  padding: 3px 6px;
+  border-radius: 5px;
+  color: #d7efca;
+  background: rgba(190,229,170,.12);
+  font-size: 9px;
+  font-weight: 700;
+}
+.somu-admin-sidebar-bottom { margin-top: auto; }
+.somu-admin-help-card {
+  padding: 15px 14px;
+  margin: 10px 0 15px;
+  border: 1px solid rgba(220,244,226,.12);
+  border-radius: 13px;
+  background: rgba(255,255,255,.045);
+}
+.somu-admin-help-icon {
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  margin-bottom: 11px;
+  border-radius: 9px;
+  color: #d6edc8;
+  background: rgba(205,236,190,.13);
+}
+.somu-admin-help-card > strong { display: block; color: #f4fbf5; font-size: 11px; }
+.somu-admin-help-card p { margin: 5px 0 12px; color: #a6c5b2; font-size: 10px; line-height: 1.55; }
+.somu-admin-help-card a { color: #d4edc3; font-size: 10px; font-weight: 700; text-decoration: none; }
+.somu-admin-help-card a i { margin-left: 4px; }
+.somu-admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 7px 3px;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+.somu-admin-profile-avatar { width: 34px; height: 34px; border-radius: 50%; color: #234d36; background: #e3d7bd; }
+.somu-admin-profile > i { color: #a8c9b4; }
+.somu-admin-main { width: calc(100% - 254px); min-width: 0; margin-left: 254px; }
+.somu-admin-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 72px;
+  padding: 0 34px;
+  border-bottom: 1px solid #e9eee8;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(16px);
+}
+.somu-admin-topbar-left, .somu-admin-topbar-actions { display: flex; align-items: center; gap: 18px; min-width: 0; }
+.somu-admin-breadcrumb { display: flex; align-items: center; gap: 10px; color: #96a197; font-size: 11px; }
+.somu-admin-breadcrumb i { color: #b9c2ba; font-size: 9px; }
+.somu-admin-breadcrumb strong { color: #27392e; font-weight: 700; }
+.somu-admin-search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 235px;
+  height: 37px;
+  padding: 0 10px;
+  border: 1px solid #e6ebe5;
+  border-radius: 9px;
+  color: #89968c;
+  background: #f9fbf8;
+}
+.somu-admin-search input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: #23352a; font: inherit; font-size: 10px; }
+.somu-admin-search input::placeholder { color: #a2aca3; }
+.somu-admin-search kbd { padding: 3px 5px; border: 1px solid #e4e9e2; border-radius: 4px; color: #98a299; background: white; font-size: 9px; white-space: nowrap; }
+.somu-admin-topbar-date { display: flex; align-items: center; gap: 7px; color: #77857a; font-size: 10px; white-space: nowrap; }
+.somu-admin-notification {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 37px;
+  height: 37px;
+  border: 1px solid #e7ece6;
+  border-radius: 10px;
+  color: #596b5e;
+  background: white;
+  font-size: 15px;
+}
+.somu-admin-notification span { position: absolute; top: 8px; right: 8px; width: 6px; height: 6px; border: 1px solid white; border-radius: 50%; background: #d18d3c; }
+.somu-admin-menu-toggle { display: none; border: 0; background: transparent; color: #203b2c; font-size: 24px; }
+.somu-admin-content { width: 100%; max-width: 1800px; padding: 30px 34px 20px; margin: 0 auto; }
+.somu-admin-page-intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+.somu-admin-eyebrow { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; color: #85948a; font-size: 9px; font-weight: 800; letter-spacing: 1.6px; }
+.somu-admin-eyebrow > span { width: 7px; height: 7px; border-radius: 2px; background: #57966a; }
+.somu-admin-page-intro h1 { margin: 0; color: #20372a; font: 800 29px/1.2 "Manrope", sans-serif; letter-spacing: -1.1px; }
+.somu-admin-page-intro > div:first-child > p:last-child { margin: 7px 0 0; color: #829087; font-size: 12px; }
+.somu-admin-intro-note { display: flex; align-items: center; gap: 9px; padding: 9px 12px; border: 1px solid #e4ebe2; border-radius: 10px; background: white; }
+.somu-admin-status-dot { width: 8px; height: 8px; border-radius: 50%; background: #d39a42; box-shadow: 0 0 0 4px #fbf1df; }
+.somu-admin-intro-note > span:last-child { display: flex; flex-direction: column; }
+.somu-admin-intro-note strong { color: #425548; font-size: 10px; }
+.somu-admin-intro-note small { margin-top: 3px; color: #96a198; font-size: 9px; }
+.somu-admin-footer { display: flex; justify-content: space-between; gap: 12px; padding: 24px 2px 4px; color: #9aa59b; font-size: 9px; }
+.somu-admin-scrim { display: none; }
+.somu-admin-shell .admin-dashboard,
+.somu-admin-shell .product-management-page,
+.somu-admin-shell .order-management-page,
+.somu-admin-shell .customer-management-page,
+.somu-admin-shell .subscription-page,
+.somu-admin-shell .sales-profit-page {
+  min-height: auto;
+  padding: 0;
+  background: transparent;
+}
+.somu-admin-shell .dashboard-header { display: none; }
+.somu-admin-shell .dashboard-label { display: none; }
+.somu-admin-shell .dashboard-header h1 { display: none; }
+.somu-admin-shell .dashboard-subtitle { display: none; }
+.somu-admin-shell .dashboard-card,
+.somu-admin-shell .stat-card,
+.somu-admin-shell .summary-card,
+.somu-admin-shell .profit-card,
+.somu-admin-shell .products-card,
+.somu-admin-shell .add-product-card,
+.somu-admin-shell .orders-card,
+.somu-admin-shell .customers-card,
+.somu-admin-shell .subscription-card,
+.somu-admin-shell .sales-panel {
+  border: 1px solid #e7ece5;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 5px 20px rgba(29,55,35,.035);
+}
+.somu-admin-shell .stat-card { position: relative; overflow: hidden; }
+.somu-admin-shell .stat-card::after { content: ""; position: absolute; right: -24px; bottom: -36px; width: 90px; height: 90px; border-radius: 50%; background: #f1f7f0; }
+.somu-admin-shell .stat-value { color: #203c2b; font-family: "Manrope", sans-serif; letter-spacing: -.7px; }
+.somu-admin-shell .stat-title { color: #839087; }
+.somu-admin-shell .stat-change { border-radius: 7px; color: #26704a; background: #eaf5ec; }
+.somu-admin-shell .stat-icon { position: relative; z-index: 1; border-radius: 12px; color: #246746; background: #eaf4eb; }
+.somu-admin-shell .sales-card .card-header h2,
+.somu-admin-shell .dashboard-card .card-header h2 { color: #253a2d; font-family: "Manrope", sans-serif; font-size: 14px; }
+.somu-admin-shell .card-header p { color: #93a097; }
+.somu-admin-shell .sales-filter,
+.somu-admin-shell .period-select,
+.somu-admin-shell .category-filter,
+.somu-admin-shell .order-status-filter,
+.somu-admin-shell .customer-type-filter {
+  min-height: 37px;
+  border: 1px solid #e4eae2;
+  border-radius: 9px;
+  color: #5d6c61;
+  background-color: #fbfcfa;
+  font-size: 11px;
+}
+.somu-admin-shell .quick-actions button { border-color: #e6ece4; border-radius: 12px; background: #fbfcfa; }
+.somu-admin-shell .quick-actions button:hover { border-color: #c9ddca; background: #f0f7ef; }
+.somu-admin-shell .quick-actions i { color: #397c51; }
+.somu-admin-shell .orders-table th,
+.somu-admin-shell .products-table th,
+.somu-admin-shell .customers-table th,
+.somu-admin-shell .subscription-table th,
+.somu-admin-shell .recent-sales-table th {
+  color: #849187;
+  background: #f8faf7;
+  font-size: 9px;
+  letter-spacing: .7px;
+}
+.somu-admin-shell .orders-table td,
+.somu-admin-shell .products-table td,
+.somu-admin-shell .customers-table td,
+.somu-admin-shell .subscription-table td,
+.somu-admin-shell .recent-sales-table td { border-color: #edf1eb; }
+.somu-admin-shell .table-wrapper,
+.somu-admin-shell .table-container,
+.somu-admin-shell .orders-table-container,
+.somu-admin-shell .customers-table-container,
+.somu-admin-shell .subscription-table-container,
+.somu-admin-shell .recent-sales-table-wrapper { border-radius: 0 0 15px 15px; }
+.somu-admin-shell .view-all-btn,
+.somu-admin-shell .add-product-btn,
+.somu-admin-shell .add-subscription-btn {
+  border-radius: 9px;
+  font-weight: 700;
+}
+.somu-admin-shell .pm-header h1,
+.somu-admin-shell .cm-header h1,
+.somu-admin-shell .om-header h1,
+.somu-admin-shell .sales-profit-header h1 { color: #20372a; font-family: "Manrope", sans-serif; letter-spacing: -.7px; }
+.somu-admin-shell .pm-small-title,
+.somu-admin-shell .cm-small-title,
+.somu-admin-shell .om-small-title { color: #4e8962; font-weight: 800; letter-spacing: 1.4px; }
+.somu-admin-shell input,
+.somu-admin-shell select,
+.somu-admin-shell textarea { border-radius: 9px; }
+.somu-admin-shell button { transition: background .18s ease, border-color .18s ease, transform .18s ease; }
+.somu-admin-shell button:focus-visible,
+.somu-admin-shell a:focus-visible,
+.somu-admin-shell input:focus-visible,
+.somu-admin-shell select:focus-visible { outline: 3px solid rgba(70,137,91,.25); outline-offset: 2px; }
+
+@media (max-width: 1250px) {
+  .somu-admin-topbar { padding: 0 24px; }
+  .somu-admin-content { padding: 26px 24px 18px; }
+  .somu-admin-search { width: 190px; }
+  .somu-admin-topbar-date { display: none; }
+}
+@media (max-width: 900px) {
+  .somu-admin-sidebar { transform: translateX(-100%); transition: transform .24s ease; box-shadow: 18px 0 40px rgba(13,37,24,.18); }
+  .somu-admin-sidebar.is-open { transform: translateX(0); }
+  .somu-admin-main { width: 100%; margin-left: 0; }
+  .somu-admin-menu-toggle { display: block; }
+  .somu-admin-scrim { display: block; position: fixed; inset: 0; z-index: 1040; border: 0; background: rgba(14,32,22,.42); }
+  .somu-admin-topbar { min-height: 64px; padding: 0 20px; }
+  .somu-admin-topbar-left, .somu-admin-topbar-actions { gap: 12px; }
+}
+@media (max-width: 600px) {
+  .somu-admin-topbar { padding: 0 13px; }
+  .somu-admin-search { width: 36px; padding: 0; justify-content: center; border-color: transparent; background: transparent; }
+  .somu-admin-search input, .somu-admin-search kbd { display: none; }
+  .somu-admin-breadcrumb span, .somu-admin-breadcrumb i { display: none; }
+  .somu-admin-breadcrumb { font-size: 11px; }
+  .somu-admin-topbar-actions { gap: 6px; }
+  .somu-admin-content { padding: 22px 13px 15px; }
+  .somu-admin-page-intro { align-items: flex-start; margin-bottom: 19px; }
+  .somu-admin-page-intro h1 { font-size: 25px; }
+  .somu-admin-intro-note { display: none; }
+  .somu-admin-footer { flex-direction: column; padding-top: 18px; }
+  .somu-admin-shell .stats-grid,
+  .somu-admin-shell .profit-summary { gap: 10px; }
+}
+
+
+/* Preserve page-specific actions while using the shared title area above. */
+.somu-admin-shell .pm-header,
+.somu-admin-shell .cm-header,
+.somu-admin-shell .om-header,
+.somu-admin-shell .subscription-header,
+.somu-admin-shell .sales-profit-header {
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+.somu-admin-shell .pm-header > div,
+.somu-admin-shell .cm-header,
+.somu-admin-shell .om-header,
+.somu-admin-shell .subscription-header > div,
+.somu-admin-shell .sales-profit-header > div {
+  display: none;
+}
+.somu-admin-shell .pm-header {
+  justify-content: flex-end;
+}
+.somu-admin-shell .subscription-header {
+  justify-content: flex-end;
+}
+.somu-admin-shell .sales-profit-header {
+  justify-content: flex-end;
+}
+.somu-admin-shell .pm-header .add-product-btn,
+.somu-admin-shell .subscription-header .add-subscription-btn {
+  box-shadow: 0 4px 12px rgba(31,104,72,.12);
+}
+
+
+/* Section identity: restrained accents make each admin area easy to scan. */
+.somu-admin-shell .somu-admin-page-intro { position: relative; }
+.somu-admin-shell .somu-admin-page-intro::before { content:""; display:block; position:absolute; left:-14px; top:2px; width:3px; height:52px; border-radius:5px; background:#47845b; }
+.somu-admin-shell .somu-admin-main:has(.admin-page-products) .somu-admin-page-intro::before { background:#2f8b68; }
+.somu-admin-shell .somu-admin-main:has(.admin-page-orders) .somu-admin-page-intro::before { background:#4e79c8; }
+.somu-admin-shell .somu-admin-main:has(.admin-page-customers) .somu-admin-page-intro::before { background:#9670c4; }
+.somu-admin-shell .somu-admin-main:has(.admin-page-subscriptions) .somu-admin-page-intro::before { background:#d09a3f; }
+.somu-admin-shell .somu-admin-main:has(.admin-page-sales-profit) .somu-admin-page-intro::before { background:#c97757; }
+.somu-admin-shell .admin-page-products .stat-card { border-top:2px solid #2f8b68; }
+.somu-admin-shell .admin-page-orders .stat-card { border-top:2px solid #4e79c8; }
+.somu-admin-shell .admin-page-customers .stat-card { border-top:2px solid #9670c4; }
+.somu-admin-shell .admin-page-subscriptions .stat-card { border-top:2px solid #d09a3f; }
+.somu-admin-shell .admin-page-sales-profit .summary-card { border-top:2px solid #c97757; }
+.somu-admin-shell .somu-admin-help-card { display:none; }
+
+
+/* Refined storefront-connected admin workspace */
+.somu-admin-shell {
+  --admin-ink: #23372b;
+  --admin-muted: #78877c;
+  --admin-line: #e5eae3;
+  --admin-green: #286b48;
+  background: #f4f6f2;
+}
+.somu-admin-sidebar {
+  background: linear-gradient(180deg, #173f2e 0%, #204d37 58%, #173b2c 100%);
+}
+.somu-admin-brand-mark {
+  border-radius: 12px;
+  background: #e0efce;
+}
+.somu-admin-workspace {
+  border-color: rgba(226, 244, 228, .16);
+  background: rgba(255,255,255,.065);
+}
+.somu-admin-nav-label {
+  margin-top: 2px;
+  letter-spacing: 1.5px;
+}
+.somu-admin-nav-link {
+  min-height: 42px;
+  border: 1px solid transparent;
+}
+.somu-admin-nav-link.active {
+  color: #fff;
+  border-color: rgba(215, 239, 197, .12);
+  background: linear-gradient(90deg, #356c4c, #2b6042);
+  box-shadow: inset 3px 0 #d3eab6;
+}
+.somu-admin-storefront-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 41px;
+  padding: 0 11px;
+  margin: 0 0 12px;
+  border: 1px solid rgba(216, 240, 218, .18);
+  border-radius: 10px;
+  color: #e2f1e2;
+  background: rgba(255,255,255,.065);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 700;
+}
+.somu-admin-storefront-link:hover {
+  color: #fff;
+  border-color: rgba(216, 240, 218, .35);
+  background: rgba(255,255,255,.11);
+}
+.somu-admin-storefront-link > i:first-child { font-size: 15px; }
+.somu-admin-storefront-link > span { flex: 1; }
+.somu-admin-main { background: #f4f6f2; }
+.somu-admin-topbar {
+  border-bottom-color: #e5ebe3;
+  background: rgba(255,255,255,.96);
+}
+.somu-admin-search {
+  background: #f7f9f5;
+}
+.somu-admin-page-intro {
+  padding: 0 0 19px;
+  border-bottom: 1px solid #e5ebe3;
+}
+.somu-admin-page-intro h1 {
+  color: #203a2b;
+  font-size: 30px;
+}
+.somu-admin-intro-note {
+  background: #fff;
+}
+
+/* Distinct but restrained section accents: inventory, fulfilment, people, plans and finance. */
+.somu-admin-main:has(.admin-dashboard) .somu-admin-page-intro { border-bottom-color: #dbe9dc; }
+.somu-admin-main:has(.product-management-page) .somu-admin-page-intro { border-bottom-color: #d6e8da; }
+.somu-admin-main:has(.order-management-page) .somu-admin-page-intro { border-bottom-color: #d8e3f5; }
+.somu-admin-main:has(.customer-management-page) .somu-admin-page-intro { border-bottom-color: #e5dcf5; }
+.somu-admin-main:has(.subscription-management-page) .somu-admin-page-intro { border-bottom-color: #d3ebe4; }
+.somu-admin-main:has(.sales-profit-page) .somu-admin-page-intro { border-bottom-color: #f0dfc6; }
+
+.somu-admin-shell .dashboard-card,
+.somu-admin-shell .stat-card,
+.somu-admin-shell .summary-card,
+.somu-admin-shell .profit-card,
+.somu-admin-shell .products-card,
+.somu-admin-shell .add-product-card,
+.somu-admin-shell .orders-card,
+.somu-admin-shell .customers-card,
+.somu-admin-shell .subscription-card,
+.somu-admin-shell .sales-panel {
+  box-shadow: 0 4px 16px rgba(31, 58, 37, .035);
+}
+.somu-admin-shell .orders-table thead th,
+.somu-admin-shell .products-table thead th,
+.somu-admin-shell .customers-table thead th,
+.somu-admin-shell .subscription-table thead th,
+.somu-admin-shell .recent-sales-table thead th {
+  border-bottom-color: #e7ece5;
+  background: #f7f9f6;
+}
+.somu-admin-shell .add-product-btn,
+.somu-admin-shell .view-all-btn,
+.somu-admin-shell .save-product-btn {
+  border-radius: 9px;
+}
+.somu-admin-shell .admin-page-products .stat-card:first-child { border-top: 3px solid #3d8757; }
+.somu-admin-shell .admin-page-orders .stat-card:first-child { border-top: 3px solid #6488c6; }
+.somu-admin-shell .admin-page-customers .stat-card:first-child { border-top: 3px solid #8b70c0; }
+.somu-admin-shell .admin-page-subscriptions .stat-card:first-child { border-top: 3px solid #43a18a; }
+.somu-admin-shell .admin-page-sales-profit .stat-card:first-child { border-top: 3px solid #c69244; }
+
+@media (max-width: 600px) {
+  .somu-admin-page-intro { padding-bottom: 15px; }
+  .somu-admin-page-intro h1 { font-size: 25px; }
+}

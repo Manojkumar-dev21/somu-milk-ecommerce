@@ -1,0 +1,10 @@
+{
+  "buildCommand": "cd somu-milk-admin-connected-enhanced/somu-milk-admin-live-design/somu-milk-admin-redesign/somu-milk-enhanced/frontend && npm install && npm run build",
+  "outputDirectory": "somu-milk-admin-connected-enhanced/somu-milk-admin-live-design/somu-milk-admin-redesign/somu-milk-enhanced/frontend/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

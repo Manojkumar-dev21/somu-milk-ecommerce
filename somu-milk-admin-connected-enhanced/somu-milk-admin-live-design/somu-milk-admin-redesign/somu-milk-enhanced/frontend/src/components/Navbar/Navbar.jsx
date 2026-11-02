@@ -257,6 +257,20 @@ function Navbar() {
               )}
             </Link>
 
+            {/* ADMIN PORTAL */}
+            <Link
+              to="/admin/dashboard"
+              className="nav-action-btn admin-nav-shortcut"
+              aria-label="Admin Portal"
+              title="Admin Dashboard"
+              onClick={closeMenu}
+            >
+              <i className="bi bi-shield-lock-fill text-success"></i>
+              <span className="action-text fw-semibold">
+                Admin
+              </span>
+            </Link>
+
           </div>
 
         </div>

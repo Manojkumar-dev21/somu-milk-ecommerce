@@ -1,0 +1,10 @@
+{
+  "name": "somu-milk-ecommerce-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix somu-milk-admin-connected-enhanced/somu-milk-admin-live-design/somu-milk-admin-redesign/somu-milk-enhanced/frontend run build",
+    "dev": "npm --prefix somu-milk-admin-connected-enhanced/somu-milk-admin-live-design/somu-milk-admin-redesign/somu-milk-enhanced/frontend run dev",
+    "start": "npm --prefix somu-milk-admin-connected-enhanced/somu-milk-admin-live-design/somu-milk-admin-redesign/somu-milk-enhanced/frontend run preview"
+  }
+}

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 
 import Navbar from "./components/Navbar/Navbar";
@@ -65,9 +65,9 @@ function App() {
               element={<ProtectedRoute><Notifications /></ProtectedRoute>}
             />
 
-            {/* ADMIN — protected routes share a dedicated operations layout */}
-            {/* TEMPORARY LOCAL DEVELOPMENT ACCESS. Restore ProtectedRoute before deployment. */}
+            {/* ADMIN — operations layout */}
             <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<Dashboard />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="products" element={<ProductManagement />} />
               <Route path="orders" element={<OrderManagement />} />
@@ -75,6 +75,9 @@ function App() {
               <Route path="subscriptions" element={<SubscriptionManagement />} />
               <Route path="sales-profit" element={<SalesProfit />} />
             </Route>
+
+            {/* Fallback to home */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>
       </CartProvider>
