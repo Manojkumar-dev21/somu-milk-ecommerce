@@ -1,0 +1,457 @@
+/* =========================================
+   NOTIFICATIONS PAGE
+========================================= */
+
+.notifications-page {
+  min-height: calc(100vh - 72px);
+  background: #f4f8f4;
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.notifications-header {
+  background: var(--brand-100);
+  padding: 45px 0;
+}
+
+.notifications-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.notifications-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: #6b6b6b;
+}
+
+.notifications-breadcrumb a {
+  color: var(--brand-600);
+  text-decoration: none;
+}
+
+.notifications-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.notifications-header h1 {
+  margin: 0 0 8px;
+  color: var(--brand-800);
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.notifications-header-content > div:first-child > p {
+  margin: 0;
+  color: #666;
+  font-size: 15px;
+}
+
+.notifications-header-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--brand-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.12);
+}
+
+
+/* =========================================
+   MAIN SECTION
+========================================= */
+
+.notifications-section {
+  padding: 45px 0 70px;
+}
+
+
+/* =========================================
+   TOP AREA
+========================================= */
+
+.notifications-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.notifications-label {
+  color: var(--brand-600);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+}
+
+.notifications-top h2 {
+  margin: 5px 0 0;
+  color: var(--brand-800);
+  font-size: 24px;
+}
+
+
+/* =========================================
+   MARK READ BUTTON
+========================================= */
+
+.mark-read-btn {
+  border: 1px solid #cfe0cf;
+  background: #ffffff;
+  color: var(--brand-600);
+  padding: 10px 16px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.mark-read-btn:hover {
+  background: var(--brand-100);
+  border-color: #a8d5aa;
+}
+
+
+/* =========================================
+   NOTIFICATION LIST
+========================================= */
+
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+
+/* =========================================
+   NOTIFICATION CARD
+========================================= */
+
+.notification-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 25px;
+  background: #ffffff;
+  border: 1px solid #e5ebe5;
+  border-radius: 15px;
+  transition: 0.3s ease;
+}
+
+.notification-card:hover {
+  border-color: #a8d5aa;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 20px rgba(46, 125, 50, 0.08);
+}
+
+
+/* Unread notification */
+
+.notification-card.unread {
+  border-left: 4px solid var(--brand-600);
+  background: #fbfffb;
+}
+
+
+/* =========================================
+   NOTIFICATION ICON
+========================================= */
+
+.notification-icon {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+}
+
+
+/* Different notification types */
+
+.notification-icon.order {
+  background: var(--brand-100);
+  color: var(--brand-600);
+}
+
+.notification-icon.delivery {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.notification-icon.offer {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.notification-icon.plan {
+  background: #f3e5f5;
+  color: #7b1fa2;
+}
+
+
+/* =========================================
+   NOTIFICATION CONTENT
+========================================= */
+
+.notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notification-content h3 {
+  margin: 0;
+  color: var(--brand-800);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.notification-content p {
+  margin: 6px 0 8px;
+  color: #777;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.notification-time {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #999;
+  font-size: 11px;
+}
+
+
+/* =========================================
+   UNREAD DOT
+========================================= */
+
+.unread-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand-600);
+}
+
+
+/* =========================================
+   ARROW
+========================================= */
+
+.notification-arrow {
+  color: #9aaa9a;
+  font-size: 14px;
+}
+
+.notification-card:hover .notification-arrow {
+  color: var(--brand-600);
+  transform: translateX(3px);
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.notifications-empty {
+  text-align: center;
+  padding: 60px 20px;
+  background: #ffffff;
+  border: 1px solid #e5ebe5;
+  border-radius: 18px;
+}
+
+.empty-notification-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: var(--brand-100);
+  color: var(--brand-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.notifications-empty h3 {
+  margin: 0 0 8px;
+  color: var(--brand-800);
+  font-size: 20px;
+}
+
+.notifications-empty p {
+  margin: 0 0 20px;
+  color: #777;
+  font-size: 14px;
+}
+
+.notification-shop-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  background: var(--brand-600);
+  color: #ffffff;
+  border-radius: 9px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.notification-shop-btn:hover {
+  background: var(--brand-800);
+  color: #ffffff;
+}
+
+
+/* =========================================
+   INFO BOX
+========================================= */
+
+.notification-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: 25px;
+  padding: 20px 22px;
+  background: #d0edd2;
+  border-radius: 14px;
+}
+
+.notification-info-icon {
+  color: var(--brand-600);
+  font-size: 21px;
+}
+
+.notification-info h3 {
+  margin: 0 0 5px;
+  color: var(--brand-800);
+  font-size: 15px;
+}
+
+.notification-info p {
+  margin: 0;
+  color: #567056;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 767px) {
+
+  .notifications-header {
+    padding: 35px 0;
+  }
+
+  .notifications-header h1 {
+    font-size: 30px;
+  }
+
+  .notifications-header-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 34px;
+  }
+
+  .notifications-section {
+    padding: 30px 0 50px;
+  }
+
+  .notifications-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .mark-read-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .notifications-header-content {
+    gap: 15px;
+  }
+
+  .notifications-header-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 27px;
+  }
+
+  .notifications-header h1 {
+    font-size: 26px;
+  }
+
+  .notifications-header-content > div:first-child > p {
+    font-size: 13px;
+  }
+
+  .notification-card {
+    align-items: flex-start;
+    padding: 18px;
+    gap: 13px;
+  }
+
+  .notification-icon {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    font-size: 18px;
+  }
+
+  .notification-content h3 {
+    font-size: 14px;
+  }
+
+  .notification-content p {
+    font-size: 12px;
+  }
+
+  .notification-arrow {
+    display: none;
+  }
+
+  .notification-info {
+    padding: 18px;
+  }
+
+}

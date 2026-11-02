@@ -1,0 +1,11 @@
+SOMU MILK — ENHANCED FRONTEND
+
+1. Extract this ZIP.
+2. Open the `frontend` folder in VS Code.
+3. Run `npm install`.
+4. Run `npm run dev`.
+5. Open the localhost URL printed in the terminal.
+
+This delivery enhances the existing frontend styling and documentation while preserving the supplied customer/admin pages and assets.
+It is the frontend phase only; backend integration and end-to-end verification are still separate steps.
+See frontend/README.md for configuration notes.

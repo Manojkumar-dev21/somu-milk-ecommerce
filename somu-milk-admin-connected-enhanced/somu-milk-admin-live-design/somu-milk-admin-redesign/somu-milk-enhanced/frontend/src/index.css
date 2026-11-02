@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  background-color: #f4f7f4;
+  color: #1b5e20;
+}
+
+* {
+  box-sizing: border-box;
+}

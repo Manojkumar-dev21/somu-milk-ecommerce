@@ -1,0 +1,10 @@
+SOMU MILK CUSTOMER FRONTEND
+
+1. Extract the ZIP.
+2. Open the frontend folder in VS Code.
+3. Run: npm install
+4. Run: npm run dev
+5. Open the localhost URL shown in the terminal.
+
+This package contains the customer-facing frontend only. The admin frontend, Spring Boot backend, and MySQL database are separate parts of the full e-commerce project.
+See frontend/README.md for production-readiness notes.

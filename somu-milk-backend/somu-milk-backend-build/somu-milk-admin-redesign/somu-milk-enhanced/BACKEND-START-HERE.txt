@@ -1,0 +1,11 @@
+SOMU MILK BACKEND
+
+1. Install Java 17 and Maven. Docker is optional if MySQL is already installed.
+2. Start MySQL using backend/docker-compose.yml:
+   cd backend
+   docker compose up -d mysql
+3. Set DB_PASSWORD consistently (see backend/.env.example and README.md).
+4. Run: mvn spring-boot:run
+5. Check: http://localhost:8081/api/health
+
+Important: this is a development backend starter. UPI provider integration and real admin authentication are not implemented yet. Do not expose it publicly until those are completed.

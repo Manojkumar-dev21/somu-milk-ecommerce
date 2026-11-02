@@ -1,0 +1,211 @@
+/* ================================
+   NAVBAR
+================================ */
+
+.navbar-logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+}
+
+.navbar {
+  min-height: 72px;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  white-space: nowrap;
+  transition: 0.2s ease;
+}
+
+.navbar-brand:hover {
+  color: var(--brand-800) !important;
+}
+
+
+/* ================================
+   CENTER MENU
+================================ */
+
+.navbar-nav .nav-link {
+  color: #333;
+  font-weight: 500;
+  font-size: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  position: relative;
+  transition: color 0.2s ease;
+  background: transparent;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--brand-600);
+}
+
+
+/* Active link */
+
+.navbar-nav .nav-link.active {
+  color: var(--brand-600) !important;
+  font-weight: 600;
+}
+
+
+/* Small green line under active page */
+
+.navbar-nav .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 0;
+  height: 2px;
+  background-color: var(--brand-600);
+  border-radius: 10px;
+}
+
+
+/* ================================
+   CONTACT BUTTON
+================================ */
+
+.contact-nav-link {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+
+/* Remove button default focus outline */
+
+.contact-nav-link:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+
+/* ================================
+   RIGHT SIDE ACTIONS
+================================ */
+
+.navbar-actions {
+  white-space: nowrap;
+}
+
+.nav-action-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 8px 13px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 10px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.nav-action-btn i {
+  font-size: 19px;
+}
+
+.nav-action-btn:hover {
+  color: var(--brand-600);
+  background-color: #f1f8f4;
+}
+
+
+/* ================================
+   CART BADGE
+================================ */
+
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 18px;
+  height: 18px;
+  padding: 1px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dc3545;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 50%;
+}
+
+
+/* ================================
+   CONTACT SECTION SCROLL
+================================ */
+
+#contact {
+  scroll-margin-top: 90px;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 991px) {
+
+  .navbar-collapse {
+    padding-top: 15px;
+  }
+
+  .navbar-nav {
+    align-items: flex-start !important;
+  }
+
+  .navbar-nav .nav-link {
+    width: 100%;
+    padding: 10px 5px;
+  }
+
+  .navbar-nav .nav-link.active::after {
+    display: none;
+  }
+
+  .navbar-actions {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    justify-content: flex-start;
+  }
+}
+
+
+/* ================================
+   NOTIFICATION BADGE
+================================ */
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -3px;
+
+  min-width: 17px;
+  height: 17px;
+
+  padding: 0 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #dc3545;
+  color: white;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  border-radius: 50%;
+  line-height: 1;
+}
+
+

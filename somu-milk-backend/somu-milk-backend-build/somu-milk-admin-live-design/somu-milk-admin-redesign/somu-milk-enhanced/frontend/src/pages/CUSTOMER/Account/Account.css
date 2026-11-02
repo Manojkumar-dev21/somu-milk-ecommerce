@@ -1,0 +1,638 @@
+
+/* =========================================
+   ACCOUNT PAGE
+========================================= */
+
+.account-page {
+  min-height: calc(100vh - 72px);
+  background: #f4f8f4;
+}
+
+
+/* =========================================
+   ACCOUNT HEADER
+========================================= */
+
+.account-header {
+  background: var(--brand-100);
+  padding: 45px 0;
+}
+
+.account-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.account-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: #6b6b6b;
+}
+
+.account-breadcrumb a {
+  color: var(--brand-600);
+  text-decoration: none;
+}
+
+.account-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.account-header h1 {
+  margin: 0 0 8px;
+  color: var(--brand-800);
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.account-header-content > div:first-child > p:last-child {
+  margin: 0;
+  color: #666;
+  font-size: 15px;
+}
+
+.account-header-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--brand-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.12);
+}
+
+
+/* =========================================
+   ACCOUNT SECTION
+========================================= */
+
+.account-section {
+  padding: 45px 0 70px;
+}
+
+
+/* =========================================
+   WELCOME
+========================================= */
+
+.account-welcome {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 25px 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 20px rgba(27, 94, 32, 0.08);
+}
+
+.welcome-avatar {
+  width: 65px;
+  height: 65px;
+  min-width: 65px;
+  border-radius: 50%;
+  background: var(--brand-100);
+  color: var(--brand-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.welcome-content {
+  flex: 1;
+}
+
+.welcome-content > span {
+  color: var(--brand-600);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.welcome-content h2 {
+  margin: 4px 0 5px;
+  color: var(--brand-800);
+  font-size: 20px;
+  word-break: break-word;
+}
+
+.welcome-content p {
+  margin: 0;
+  color: #777;
+  font-size: 13px;
+}
+
+.logout-btn {
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+  color: #c62828;
+  padding: 10px 18px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #fff4f4;
+  border-color: #e0b0b0;
+}
+
+
+/* =========================================
+   ACCOUNT GRID
+========================================= */
+
+.account-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.account-card {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 25px;
+  background: #ffffff;
+  border: 1px solid #e5ebe5;
+  border-radius: 15px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.3s ease;
+}
+
+.account-card:hover {
+  border-color: #a8d5aa;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(46, 125, 50, 0.1);
+}
+
+.account-card-icon {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 12px;
+  background: var(--brand-100);
+  color: var(--brand-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.account-card h3 {
+  margin: 0 0 6px;
+  color: var(--brand-800);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.account-card p {
+  margin: 0;
+  color: #777;
+  font-size: 13px;
+  line-height: 1.5;
+  padding-right: 25px;
+}
+
+.card-arrow {
+  position: absolute;
+  right: 20px;
+  color: #8aaa8b;
+  transition: 0.3s ease;
+}
+
+.account-card:hover .card-arrow {
+  color: var(--brand-600);
+  transform: translateX(3px);
+}
+
+
+/* =========================================
+   ACCOUNT DETAIL SECTIONS
+========================================= */
+
+.account-detail-section {
+  scroll-margin-top: 90px;
+  margin-top: 30px;
+  background: #ffffff;
+  border: 1px solid #e5ebe5;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(27, 94, 32, 0.06);
+}
+
+
+/* =========================================
+   DETAIL SECTION HEADER
+========================================= */
+
+.detail-section-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 25px 30px;
+  background: var(--brand-100);
+  border-bottom: 1px solid #d9eadb;
+}
+
+.detail-icon {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  border-radius: 12px;
+  background: #ffffff;
+  color: var(--brand-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.detail-section-header span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--brand-600);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
+
+.detail-section-header h2 {
+  margin: 0;
+  color: var(--brand-800);
+  font-size: 22px;
+}
+
+
+/* =========================================
+   DETAIL CONTENT
+========================================= */
+
+.detail-content {
+  padding: 28px 30px;
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.profile-content {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.profile-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 5px;
+  border-bottom: 1px solid #edf1ed;
+}
+
+.profile-row:last-child {
+  border-bottom: none;
+}
+
+.profile-row span {
+  color: #777;
+  font-size: 14px;
+}
+
+.profile-row strong {
+  color: var(--brand-800);
+  font-size: 14px;
+  text-align: right;
+  word-break: break-word;
+}
+
+.status-active {
+  color: var(--brand-600) !important;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+/* =========================================
+   EMPTY DETAIL
+========================================= */
+
+.empty-detail {
+  text-align: center;
+  padding: 25px 15px 20px;
+}
+
+.empty-detail-icon {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  background: var(--brand-100);
+  color: var(--brand-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 27px;
+}
+
+.empty-detail h3 {
+  margin: 0 0 8px;
+  color: var(--brand-800);
+  font-size: 19px;
+}
+
+.empty-detail p {
+  max-width: 520px;
+  margin: 0 auto 20px;
+  color: #777;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   DETAIL ACTION BUTTON
+========================================= */
+
+.detail-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  background: var(--brand-600);
+  color: #ffffff;
+  border-radius: 9px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.detail-action-btn:hover {
+  background: var(--brand-800);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   SHOPPING SECTION
+========================================= */
+
+.account-shopping {
+  margin-top: 30px;
+  padding: 30px;
+  background: #d0edd2;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.shopping-label {
+  color: var(--brand-600);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.account-shopping h2 {
+  margin: 7px 0;
+  color: var(--brand-800);
+  font-size: 22px;
+}
+
+.account-shopping p {
+  margin: 0;
+  color: #567056;
+  font-size: 14px;
+}
+
+.shop-now-btn {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: var(--brand-600);
+  color: #ffffff;
+  border-radius: 9px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.shop-now-btn:hover {
+  background: var(--brand-800);
+  color: #ffffff;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 767px) {
+
+  .account-header {
+    padding: 35px 0;
+  }
+
+  .account-header h1 {
+    font-size: 30px;
+  }
+
+  .account-header-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 36px;
+  }
+
+  .account-section {
+    padding: 30px 0 50px;
+  }
+
+  .account-welcome {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 22px;
+  }
+
+  .logout-btn {
+    margin-left: 85px;
+  }
+
+  .account-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .account-shopping {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .detail-section-header {
+    padding: 22px;
+  }
+
+  .detail-content {
+    padding: 22px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .account-header-content {
+    gap: 15px;
+  }
+
+  .account-header-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 28px;
+  }
+
+  .account-header h1 {
+    font-size: 26px;
+  }
+
+  .account-header-content > div:first-child > p:last-child {
+    font-size: 13px;
+  }
+
+  .account-welcome {
+    gap: 15px;
+  }
+
+  .welcome-avatar {
+    width: 55px;
+    height: 55px;
+    min-width: 55px;
+  }
+
+  .welcome-content {
+    min-width: 0;
+  }
+
+  .welcome-content h2 {
+    font-size: 16px;
+  }
+
+  .logout-btn {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .account-card {
+    padding: 20px 18px;
+  }
+
+  .account-card-icon {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    font-size: 19px;
+  }
+
+  .account-card h3 {
+    font-size: 15px;
+  }
+
+  .account-card p {
+    font-size: 12px;
+  }
+
+  .account-detail-section {
+    scroll-margin-top: 75px;
+  }
+
+  .detail-section-header {
+    padding: 20px 18px;
+  }
+
+  .detail-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    font-size: 19px;
+  }
+
+  .detail-section-header h2 {
+    font-size: 19px;
+  }
+
+  .detail-section-header span {
+    font-size: 10px;
+  }
+
+  .detail-content {
+    padding: 20px 18px;
+  }
+
+  .profile-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .profile-row strong {
+    text-align: left;
+  }
+
+  .empty-detail {
+    padding: 20px 5px;
+  }
+
+  .empty-detail h3 {
+    font-size: 17px;
+  }
+
+  .empty-detail p {
+    font-size: 13px;
+  }
+
+  .account-shopping {
+    padding: 25px 20px;
+  }
+
+  .account-shopping h2 {
+    font-size: 19px;
+  }
+
+  .shop-now-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+}
