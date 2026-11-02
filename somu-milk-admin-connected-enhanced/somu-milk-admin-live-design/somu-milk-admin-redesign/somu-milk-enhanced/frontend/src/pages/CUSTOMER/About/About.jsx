@@ -5,10 +5,10 @@ import "./About.css";
 import Footer from "../../../components/Footer/Footer";
 
 import bg from "../../../assets/bg.jpg";
-import milkImg from "../../../assets/feature-milk.jpg";
-import curdImg from "../../../assets/feature-curd.jpg";
-import butterImg from "../../../assets/feature-butter.jpg";
-import paneerImg from "../../../assets/feature-paneer.jpg";
+import milkImg from "../../../assets/fresh_cow_milk.png";
+import curdImg from "../../../assets/fresh_curd.png";
+import butterImg from "../../../assets/salted_butter.png";
+import paneerImg from "../../../assets/fresh_panner.png";
 
 function About() {
   const faqs = [
@@ -519,104 +519,6 @@ function About() {
             </div>
 
           </div>
-
-        </div>
-
-      </section>
-
-
-      {/* ================= LIFE AT SOMU ================= */}
-
-      <section className="life-at-somu">
-
-        <div className="container">
-
-          <div className="section-heading text-center">
-
-            <span className="section-label">
-              LIFE AT SOMU
-            </span>
-
-            <h2>
-              More Than Just Dairy
-            </h2>
-
-            <p>
-              Our employees, customers and community are an
-              important part of the Somu Milk journey.
-            </p>
-
-          </div>
-
-
-          <div className="life-gallery">
-
-            <div className="life-gallery-item large">
-
-              <div className="gallery-placeholder">
-
-                <i className="bi bi-images"></i>
-
-                <span>
-                  Company Celebrations
-                </span>
-
-              </div>
-
-            </div>
-
-
-            <div className="life-gallery-item">
-
-              <div className="gallery-placeholder">
-
-                <i className="bi bi-people"></i>
-
-                <span>
-                  Our Team
-                </span>
-
-              </div>
-
-            </div>
-
-
-            <div className="life-gallery-item">
-
-              <div className="gallery-placeholder">
-
-                <i className="bi bi-balloon"></i>
-
-                <span>
-                  Special Occasions
-                </span>
-
-              </div>
-
-            </div>
-
-
-            <div className="life-gallery-item">
-
-              <div className="gallery-placeholder">
-
-                <i className="bi bi-heart"></i>
-
-                <span>
-                  Customer Moments
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <p className="gallery-note">
-            Actual company, employee and customer photographs
-            can be added here later.
-          </p>
 
         </div>
 

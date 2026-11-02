@@ -1,10 +1,10 @@
 import { USE_MOCK } from "../config";
 import { api, tokenStore, ApiError, unwrap, delay } from "./api";
 import { triggerOrderStatusNotification } from "./notificationService";
-import milkImg from "../assets/home-milk.jpg";
-import curdImg from "../assets/home-curd.jpg";
-import paneerImg from "../assets/home-paneer.jpg";
-import gheeImg from "../assets/home-ghee.jpg";
+import milkImg from "../assets/fresh_cow_milk.png";
+import curdImg from "../assets/fresh_curd.png";
+import paneerImg from "../assets/fresh_panner.png";
+import gheeImg from "../assets/pure_cow_ghee.png";
 
 const ORDERS_KEY = "somu_mock_orders";
 

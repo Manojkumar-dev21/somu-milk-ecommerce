@@ -259,6 +259,84 @@
       ],
       "createdAt": "2026-11-02T04:02:13.941Z",
       "updatedAt": "2026-11-02T04:02:13.941Z"
+    },
+    {
+      "id": 10,
+      "_id": "prod-10",
+      "name": "Fresh Cream",
+      "category": "Fat-Based Products",
+      "image": "fresh_cream.png",
+      "description": "Fresh dairy cream ideal for desserts, cooking, baking and creamy recipes.",
+      "stock": 18,
+      "isAvailable": true,
+      "sizes": [
+        {
+          "size": "100 ml",
+          "price": 50
+        },
+        {
+          "size": "200 ml",
+          "price": 90
+        },
+        {
+          "size": "500 ml",
+          "price": 210
+        }
+      ],
+      "createdAt": "2026-11-02T04:02:13.941Z",
+      "updatedAt": "2026-11-02T04:02:13.941Z"
+    },
+    {
+      "id": 11,
+      "_id": "prod-11",
+      "name": "Processed Cheese",
+      "category": "Others",
+      "image": "processed_cheese.png",
+      "description": "Creamy and delicious cheese suitable for sandwiches, cooking and snacks.",
+      "stock": 14,
+      "isAvailable": true,
+      "sizes": [
+        {
+          "size": "100 g",
+          "price": 70
+        },
+        {
+          "size": "200 g",
+          "price": 130
+        },
+        {
+          "size": "500 g",
+          "price": 300
+        }
+      ],
+      "createdAt": "2026-11-02T04:02:13.941Z",
+      "updatedAt": "2026-11-02T04:02:13.941Z"
+    },
+    {
+      "id": 12,
+      "_id": "prod-12",
+      "name": "Milk Ice Cream",
+      "category": "Others",
+      "image": "milk_ice_cream.png",
+      "description": "Creamy and delicious milk ice cream made for a refreshing family treat.",
+      "stock": 0,
+      "isAvailable": false,
+      "sizes": [
+        {
+          "size": "100 ml",
+          "price": 40
+        },
+        {
+          "size": "500 ml",
+          "price": 160
+        },
+        {
+          "size": "1 L",
+          "price": 280
+        }
+      ],
+      "createdAt": "2026-11-02T04:02:13.941Z",
+      "updatedAt": "2026-11-02T04:02:13.941Z"
     }
   ],
   "offers": [

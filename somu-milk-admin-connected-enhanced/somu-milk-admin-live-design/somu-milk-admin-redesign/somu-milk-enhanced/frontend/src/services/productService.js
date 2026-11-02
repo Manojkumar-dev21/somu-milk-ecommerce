@@ -1,6 +1,7 @@
 import { USE_MOCK } from "../config";
 import { api, unwrap, withId, delay } from "./api";
 import * as seed from "../data/seed";
+import { resolveImage } from "../utils/productImage";
 
 const STOCK_KEY = "somu_stock_overrides";
 
@@ -29,18 +30,12 @@ function applyStockOverrides(productList) {
   const overrides = getStockOverrides();
   return productList.map((item) => {
     const override = overrides[String(item.id)];
-    if (override) {
-      return {
-        ...item,
-        stock: override.stock,
-        isAvailable: override.isAvailable,
-      };
-    }
-    const stock = item.stock !== undefined ? Number(item.stock) : 25;
+    const stock = override ? override.stock : (item.stock !== undefined ? Number(item.stock) : 25);
     const isAvailable =
-      item.isAvailable !== undefined ? Boolean(item.isAvailable) : stock > 0;
+      override ? override.isAvailable : (item.isAvailable !== undefined ? Boolean(item.isAvailable) : stock > 0);
     return {
       ...item,
+      image: resolveImage(item),
       stock,
       isAvailable,
     };
@@ -79,9 +74,16 @@ export async function getPopularProducts() {
 export async function getOffers() {
   if (USE_MOCK) {
     await delay(100);
-    return seed.offers;
+    return seed.offers.map((offer) => ({
+      ...offer,
+      image: resolveImage(offer),
+    }));
   }
-  return unwrap(await api.get("/offers", { auth: false })).map(withId);
+  const list = unwrap(await api.get("/offers", { auth: false })).map(withId);
+  return list.map((offer) => ({
+    ...offer,
+    image: resolveImage(offer),
+  }));
 }
 
 export async function getReviews() {

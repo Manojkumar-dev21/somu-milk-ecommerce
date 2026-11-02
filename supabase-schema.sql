@@ -157,15 +157,18 @@ ON CONFLICT (email) DO NOTHING;
 -- SEED PRODUCTS
 INSERT INTO public.products (id, name, category, image, description, stock, is_available, sizes)
 VALUES
-(1, 'Fresh Cow Milk', 'Milk Products', '/src/assets/home-milk.jpg', 'Fresh farm milk collected daily and delivered with natural taste and goodness.', 65, true, '[{"size":"500 ml","price":35},{"size":"1 L","price":65},{"size":"2 L","price":125}]'::jsonb),
-(2, 'Full Cream Milk', 'Milk Products', '/src/assets/home-milk.jpg', 'Rich and creamy full cream milk suitable for tea, coffee, cooking and daily use.', 40, true, '[{"size":"500 ml","price":38},{"size":"1 L","price":70},{"size":"2 L","price":135}]'::jsonb),
-(3, 'Flavored Milk', 'Milk Products', '/src/assets/home-milk.jpg', 'Refreshing flavored milk made with quality dairy ingredients for a delicious drink.', 25, true, '[{"size":"200 ml","price":25},{"size":"500 ml","price":55},{"size":"1 L","price":100}]'::jsonb),
-(4, 'Fresh Curd', 'Fermented Products', '/src/assets/home-curd.jpg', 'Fresh and creamy curd prepared from quality milk with a smooth texture.', 35, true, '[{"size":"200 g","price":20},{"size":"500 g","price":45},{"size":"1 kg","price":80}]'::jsonb),
-(5, 'Buttermilk', 'Fermented Products', '/src/assets/home-curd.jpg', 'Light and refreshing buttermilk, perfect for staying cool and refreshed.', 50, true, '[{"size":"200 ml","price":12},{"size":"500 ml","price":25},{"size":"1 L","price":40}]'::jsonb),
-(6, 'Fresh Lassi', 'Fermented Products', '/src/assets/home-curd.jpg', 'Creamy and refreshing lassi prepared from fresh curd for a delicious dairy drink.', 20, true, '[{"size":"200 ml","price":25},{"size":"500 ml","price":55},{"size":"1 L","price":100}]'::jsonb),
-(7, 'Salted Butter', 'Fat-Based Products', '/src/assets/home-butter.jpg', 'Smooth and creamy salted butter made from fresh milk with a rich dairy taste.', 30, true, '[{"size":"100 g","price":60},{"size":"250 g","price":140},{"size":"500 g","price":275}]'::jsonb),
-(8, 'Pure Cow Ghee', 'Fat-Based Products', '/src/assets/home-ghee.jpg', 'Pure aromatic cow ghee prepared with care for cooking and traditional recipes.', 45, true, '[{"size":"100 ml","price":80},{"size":"500 ml","price":345},{"size":"1 L","price":660}]'::jsonb),
-(9, 'Fresh Paneer', 'Others', '/src/assets/home-paneer.jpg', 'Soft and fresh paneer prepared from quality milk, perfect for everyday cooking.', 28, true, '[{"size":"200 g","price":110},{"size":"500 g","price":275},{"size":"1 kg","price":550}]'::jsonb)
+(1, 'Fresh Cow Milk', 'Milk Products', 'fresh_cow_milk.png', 'Fresh farm milk collected daily and delivered with natural taste and goodness.', 65, true, '[{"size":"500 ml","price":35},{"size":"1 L","price":65},{"size":"2 L","price":125}]'::jsonb),
+(2, 'Full Cream Milk', 'Milk Products', 'full_cream_milk.png', 'Rich and creamy full cream milk suitable for tea, coffee, cooking and daily use.', 40, true, '[{"size":"500 ml","price":38},{"size":"1 L","price":70},{"size":"2 L","price":135}]'::jsonb),
+(3, 'Flavored Milk', 'Milk Products', 'flavored_milk.png', 'Refreshing flavored milk made with quality dairy ingredients for a delicious drink.', 25, true, '[{"size":"200 ml","price":25},{"size":"500 ml","price":55},{"size":"1 L","price":100}]'::jsonb),
+(4, 'Fresh Curd', 'Fermented Products', 'fresh_curd.png', 'Fresh and creamy curd prepared from quality milk with a smooth texture.', 35, true, '[{"size":"200 g","price":20},{"size":"500 g","price":45},{"size":"1 kg","price":80}]'::jsonb),
+(5, 'Buttermilk', 'Fermented Products', 'buttermilk.png', 'Light and refreshing buttermilk, perfect for staying cool and refreshed.', 50, true, '[{"size":"200 ml","price":12},{"size":"500 ml","price":25},{"size":"1 L","price":40}]'::jsonb),
+(6, 'Fresh Lassi', 'Fermented Products', 'fresh_lassi.png', 'Creamy and refreshing lassi prepared from fresh curd for a delicious dairy drink.', 20, true, '[{"size":"200 ml","price":25},{"size":"500 ml","price":55},{"size":"1 L","price":100}]'::jsonb),
+(7, 'Salted Butter', 'Fat-Based Products', 'salted_butter.png', 'Smooth and creamy salted butter made from fresh milk with a rich dairy taste.', 30, true, '[{"size":"100 g","price":60},{"size":"250 g","price":140},{"size":"500 g","price":275}]'::jsonb),
+(8, 'Fresh Cream', 'Fat-Based Products', 'fresh_cream.png', 'Fresh dairy cream ideal for desserts, cooking, baking and creamy recipes.', 18, true, '[{"size":"100 ml","price":50},{"size":"200 ml","price":90},{"size":"500 ml","price":210}]'::jsonb),
+(9, 'Pure Cow Ghee', 'Fat-Based Products', 'pure_cow_ghee.png', 'Pure aromatic cow ghee prepared with care for cooking and traditional recipes.', 45, true, '[{"size":"100 ml","price":80},{"size":"500 ml","price":345},{"size":"1 L","price":660}]'::jsonb),
+(10, 'Fresh Paneer', 'Others', 'fresh_panner.png', 'Soft and fresh paneer prepared from quality milk, perfect for everyday cooking.', 28, true, '[{"size":"200 g","price":110},{"size":"500 g","price":275},{"size":"1 kg","price":550}]'::jsonb),
+(11, 'Processed Cheese', 'Others', 'processed_cheese.png', 'Creamy and delicious cheese suitable for sandwiches, cooking and snacks.', 14, true, '[{"size":"100 g","price":70},{"size":"200 g","price":130},{"size":"500 g","price":300}]'::jsonb),
+(12, 'Milk Ice Cream', 'Others', 'milk_ice_cream.png', 'Creamy and delicious milk ice cream made for a refreshing family treat.', 0, false, '[{"size":"100 ml","price":40},{"size":"500 ml","price":160},{"size":"1 L","price":280}]'::jsonb)
 ON CONFLICT (id) DO NOTHING;
 
 -- SEED OFFERS

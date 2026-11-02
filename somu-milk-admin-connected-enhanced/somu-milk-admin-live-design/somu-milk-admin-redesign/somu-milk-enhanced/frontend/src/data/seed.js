@@ -6,17 +6,18 @@
    of this file is used - everything comes from the server.
 ========================================================= */
 
-import milkImg from "../assets/home-milk.jpg";
-import curdImg from "../assets/home-curd.jpg";
-import butterImg from "../assets/home-butter.jpg";
-import paneerImg from "../assets/home-paneer.jpg";
-import gheeImg from "../assets/home-ghee.jpg";
-import icecreamImg from "../assets/home-icecream.jpg";
-
-import featureMilk from "../assets/feature-milk.jpg";
-import featureCurd from "../assets/feature-curd.jpg";
-import featureButter from "../assets/feature-butter.jpg";
-import featurePaneer from "../assets/feature-paneer.jpg";
+import freshCowMilkImg from "../assets/fresh_cow_milk.png";
+import fullCreamMilkImg from "../assets/full_cream_milk.png";
+import flavoredMilkImg from "../assets/flavored_milk.png";
+import freshCurdImg from "../assets/fresh_curd.png";
+import buttermilkImg from "../assets/buttermilk.png";
+import freshLassiImg from "../assets/fresh_lassi.png";
+import saltedButterImg from "../assets/salted_butter.png";
+import freshCreamImg from "../assets/fresh_cream.png";
+import pureCowGheeImg from "../assets/pure_cow_ghee.png";
+import freshPaneerImg from "../assets/fresh_panner.png";
+import processedCheeseImg from "../assets/processed_cheese.png";
+import milkIceCreamImg from "../assets/milk_ice_cream.png";
 
 import person1 from "../assets/feedback-person1.jpg";
 import person2 from "../assets/feedback-person2.jpg";
@@ -29,7 +30,7 @@ export const products = [
     id: 1,
     name: "Fresh Cow Milk",
     category: "Milk Products",
-    image: milkImg,
+    image: freshCowMilkImg,
     description:
       "Fresh farm milk collected daily and delivered with natural taste and goodness.",
     stock: 45,
@@ -45,7 +46,7 @@ export const products = [
     id: 2,
     name: "Full Cream Milk",
     category: "Milk Products",
-    image: milkImg,
+    image: fullCreamMilkImg,
     description:
       "Rich and creamy full cream milk suitable for tea, coffee, cooking and daily use.",
     stock: 32,
@@ -61,7 +62,7 @@ export const products = [
     id: 3,
     name: "Flavored Milk",
     category: "Milk Products",
-    image: milkImg,
+    image: flavoredMilkImg,
     description:
       "Refreshing flavored milk made with quality dairy ingredients for a delicious drink.",
     stock: 0,
@@ -77,7 +78,7 @@ export const products = [
     id: 4,
     name: "Fresh Curd",
     category: "Fermented Products",
-    image: curdImg,
+    image: freshCurdImg,
     description:
       "Fresh and creamy curd prepared from quality milk with a smooth texture.",
     stock: 28,
@@ -93,7 +94,7 @@ export const products = [
     id: 5,
     name: "Buttermilk",
     category: "Fermented Products",
-    image: curdImg,
+    image: buttermilkImg,
     description:
       "Light and refreshing buttermilk, perfect for staying cool and refreshed.",
     stock: 20,
@@ -109,7 +110,7 @@ export const products = [
     id: 6,
     name: "Fresh Lassi",
     category: "Fermented Products",
-    image: curdImg,
+    image: freshLassiImg,
     description:
       "Creamy and refreshing lassi prepared from fresh curd for a delicious dairy drink.",
     stock: 15,
@@ -125,7 +126,7 @@ export const products = [
     id: 7,
     name: "Salted Butter",
     category: "Fat-Based Products",
-    image: butterImg,
+    image: saltedButterImg,
     description:
       "Smooth and creamy salted butter made from fresh milk with a rich dairy taste.",
     stock: 12,
@@ -141,7 +142,7 @@ export const products = [
     id: 8,
     name: "Fresh Cream",
     category: "Fat-Based Products",
-    image: butterImg,
+    image: freshCreamImg,
     description:
       "Fresh dairy cream ideal for desserts, cooking, baking and creamy recipes.",
     stock: 18,
@@ -157,7 +158,7 @@ export const products = [
     id: 9,
     name: "Pure Cow Ghee",
     category: "Fat-Based Products",
-    image: gheeImg,
+    image: pureCowGheeImg,
     description:
       "Pure aromatic cow ghee prepared with care for cooking and traditional recipes.",
     stock: 22,
@@ -173,7 +174,7 @@ export const products = [
     id: 10,
     name: "Fresh Paneer",
     category: "Others",
-    image: paneerImg,
+    image: freshPaneerImg,
     description:
       "Soft and fresh paneer prepared from quality milk, perfect for everyday cooking.",
     stock: 16,
@@ -189,7 +190,7 @@ export const products = [
     id: 11,
     name: "Processed Cheese",
     category: "Others",
-    image: paneerImg,
+    image: processedCheeseImg,
     description:
       "Creamy and delicious cheese suitable for sandwiches, cooking and snacks.",
     stock: 14,
@@ -205,7 +206,7 @@ export const products = [
     id: 12,
     name: "Milk Ice Cream",
     category: "Others",
-    image: icecreamImg,
+    image: milkIceCreamImg,
     description:
       "Creamy and delicious milk ice cream made for a refreshing family treat.",
     stock: 0,
@@ -224,32 +225,32 @@ export const popularProducts = [
   {
     id: 1,
     name: "Fresh Cow Milk",
-    image: featureMilk,
-    price: "\u20b965",
+    image: freshCowMilkImg,
+    price: "₹65",
     quantity: "1 L",
     description: "Fresh milk for your everyday needs.",
   },
   {
     id: 2,
     name: "Fresh Curd",
-    image: featureCurd,
-    price: "\u20b950",
+    image: freshCurdImg,
+    price: "₹50",
     quantity: "500 g",
     description: "Thick and fresh curd for everyday meals.",
   },
   {
     id: 3,
     name: "Salted Butter",
-    image: featureButter,
-    price: "\u20b960",
+    image: saltedButterImg,
+    price: "₹60",
     quantity: "100 g",
     description: "Creamy butter made from quality dairy.",
   },
   {
     id: 4,
     name: "Fresh Paneer",
-    image: featurePaneer,
-    price: "\u20b9120",
+    image: freshPaneerImg,
+    price: "₹120",
     quantity: "200 g",
     description: "Soft and fresh paneer for your favourite dishes.",
   },
@@ -261,40 +262,40 @@ export const offers = [
   {
     id: 1,
     title: "Fresh Milk Special",
-    image: featureMilk,
+    image: freshCowMilkImg,
     description: "Enjoy fresh and quality cow milk for your everyday needs.",
-    oldPrice: "\u20b970",
-    price: "\u20b965",
+    oldPrice: "₹70",
+    price: "₹65",
     quantity: "1 L",
     badge: "Fresh Deal",
   },
   {
     id: 2,
     title: "Fresh Curd Offer",
-    image: featureCurd,
+    image: freshCurdImg,
     description: "Thick and creamy fresh curd made from quality milk.",
-    oldPrice: "\u20b960",
-    price: "\u20b950",
+    oldPrice: "₹60",
+    price: "₹50",
     quantity: "500 g",
     badge: "10% OFF",
   },
   {
     id: 3,
     title: "Butter Special",
-    image: featureButter,
+    image: saltedButterImg,
     description: "Creamy and delicious butter for your everyday meals.",
-    oldPrice: "\u20b970",
-    price: "\u20b960",
+    oldPrice: "₹70",
+    price: "₹60",
     quantity: "100 g",
     badge: "Special Price",
   },
   {
     id: 4,
     title: "Fresh Paneer Deal",
-    image: featurePaneer,
+    image: freshPaneerImg,
     description: "Soft and fresh paneer made from quality milk.",
-    oldPrice: "\u20b9140",
-    price: "\u20b9120",
+    oldPrice: "₹140",
+    price: "₹120",
     quantity: "200 g",
     badge: "Best Deal",
   },

@@ -9,12 +9,12 @@ import { getPopularProducts, getReviews } from "../../../services/productService
 
 import bg from '../../../assets/bg.jpg';
 
-import milkImg from '../../../assets/home-milk.jpg';
-import curdImg from '../../../assets/home-curd.jpg';
-import butterImg from '../../../assets/home-butter.jpg';
-import paneerImg from '../../../assets/home-paneer.jpg';
-import gheeImg from '../../../assets/home-ghee.jpg';
-import icecreamImg from '../../../assets/home-icecream.jpg';
+import freshCowMilkImg from '../../../assets/fresh_cow_milk.png';
+import freshCurdImg from '../../../assets/fresh_curd.png';
+import saltedButterImg from '../../../assets/salted_butter.png';
+import freshPaneerImg from '../../../assets/fresh_panner.png';
+import pureCowGheeImg from '../../../assets/pure_cow_ghee.png';
+import milkIceCreamImg from '../../../assets/milk_ice_cream.png';
 
 
 
@@ -26,12 +26,12 @@ function Home() {
   ========================= */
 
   const categories = [
-    { name: 'Milk', image: milkImg, icon: 'bi-cup-straw' },
-    { name: 'Curd', image: curdImg, icon: 'bi-cup' },
-    { name: 'Butter', image: butterImg, icon: 'bi-box' },
-    { name: 'Paneer', image: paneerImg, icon: 'bi-grid' },
-    { name: 'Ghee', image: gheeImg, icon: 'bi-droplet' },
-    { name: 'Ice Cream', image: icecreamImg, icon: 'bi-snow' },
+    { name: 'Milk', image: freshCowMilkImg, icon: 'bi-cup-straw' },
+    { name: 'Curd', image: freshCurdImg, icon: 'bi-cup' },
+    { name: 'Butter', image: saltedButterImg, icon: 'bi-box' },
+    { name: 'Paneer', image: freshPaneerImg, icon: 'bi-grid' },
+    { name: 'Ghee', image: pureCowGheeImg, icon: 'bi-droplet' },
+    { name: 'Ice Cream', image: milkIceCreamImg, icon: 'bi-snow' },
   ];
 
 
