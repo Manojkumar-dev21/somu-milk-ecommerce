@@ -21,25 +21,26 @@ function Navbar() {
   const [unreadCount, setUnreadCount] = useState(0);
 
   useEffect(() => {
-    if (!user) {
-      setUnreadCount(0);
-      return;
-    }
-
     let cancelled = false;
 
-    getNotifications()
-      .then((list) => {
-        if (!cancelled) {
-          setUnreadCount(list.filter((item) => item.unread).length);
-        }
-      })
-      .catch(() => {
-        if (!cancelled) setUnreadCount(0);
-      });
+    const refreshUnread = () => {
+      getNotifications()
+        .then((list) => {
+          if (!cancelled) {
+            setUnreadCount(list.filter((item) => item.unread).length);
+          }
+        })
+        .catch(() => {
+          if (!cancelled) setUnreadCount(0);
+        });
+    };
+
+    refreshUnread();
+    window.addEventListener("somu:notifications-updated", refreshUnread);
 
     return () => {
       cancelled = true;
+      window.removeEventListener("somu:notifications-updated", refreshUnread);
     };
   }, [user]);
 
@@ -166,6 +167,18 @@ function Navbar() {
               </NavLink>
             </li>
 
+            {/* TRACK ORDER */}
+            <li className="nav-item">
+              <NavLink
+                className="nav-link px-3"
+                to="/track"
+                onClick={closeMenu}
+              >
+                <i className="bi bi-geo-alt-fill me-1 text-success"></i>
+                Track Order
+              </NavLink>
+            </li>
+
             {/* ABOUT */}
             <li className="nav-item">
               <NavLink
@@ -217,7 +230,7 @@ function Navbar() {
 
             {/* NOTIFICATIONS */}
             <Link
-              to="/account/notifications"
+              to="/notifications"
               className="nav-action-btn position-relative"
               aria-label="Notifications"
               onClick={closeMenu}

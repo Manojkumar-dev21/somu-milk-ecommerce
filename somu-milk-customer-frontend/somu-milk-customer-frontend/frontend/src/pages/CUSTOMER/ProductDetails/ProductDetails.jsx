@@ -19,6 +19,13 @@ function ProductDetails() {
     reload,
   } = useAsync(getProducts, []);
 
+  // Listen for admin stock updates
+  useEffect(() => {
+    const handleUpdate = () => reload();
+    window.addEventListener("somu:products-updated", handleUpdate);
+    return () => window.removeEventListener("somu:products-updated", handleUpdate);
+  }, [reload]);
+
   const products = productList || [];
 
   // ids can be numbers (demo) or text (database) - compare as text
@@ -179,12 +186,21 @@ function ProductDetails() {
     };
   };
 
+  const isOutOfStock =
+    (product?.stock !== undefined && Number(product.stock) <= 0) ||
+    product?.isAvailable === false;
+
   /* ========================================
      ADD TO CART
   ======================================== */
 
   const handleAddToCart = () => {
     if (!selectedSize) return;
+
+    if (isOutOfStock) {
+      showToast(`${product.name} is currently out of stock`);
+      return;
+    }
 
     const cartItem = createCartItem();
 
@@ -201,6 +217,11 @@ function ProductDetails() {
 
   const handleBuyNow = () => {
     if (!selectedSize) return;
+
+    if (isOutOfStock) {
+      showToast(`${product.name} is currently out of stock`);
+      return;
+    }
 
     const cartItem = createCartItem();
 
@@ -342,6 +363,21 @@ function ProductDetails() {
               <p className="product-description">
                 {product.description}
               </p>
+
+              {isOutOfStock ? (
+                <div className="product-stock-banner out-of-stock">
+                  <i className="bi bi-exclamation-octagon-fill"></i>
+                  <div>
+                    <strong>Currently Out of Stock</strong>
+                    <p>Packaging underway at our farm. Please check back later today.</p>
+                  </div>
+                </div>
+              ) : (
+                <div className="product-stock-banner in-stock">
+                  <i className="bi bi-check-circle-fill"></i>
+                  <span>In Stock & Ready for Farm Fresh Delivery</span>
+                </div>
+              )}
 
 
               {/* ========================================
@@ -705,28 +741,41 @@ function ProductDetails() {
                   ACTION BUTTONS
               ======================================== */}
 
-              <div className="product-action-buttons">
+              {isOutOfStock ? (
+                <div className="product-action-buttons">
+                  <button
+                    type="button"
+                    className="add-cart-btn disabled-btn w-100"
+                    disabled
+                  >
+                    <i className="bi bi-slash-circle me-2"></i>
+                    Out of Stock - Currently Unavailable
+                  </button>
+                </div>
+              ) : (
+                <div className="product-action-buttons">
 
-                <button
-                  type="button"
-                  className="add-cart-btn"
-                  onClick={handleAddToCart}
-                >
-                  <i className="bi bi-cart-plus"></i>
-                  Add to Cart
-                </button>
+                  <button
+                    type="button"
+                    className="add-cart-btn"
+                    onClick={handleAddToCart}
+                  >
+                    <i className="bi bi-cart-plus"></i>
+                    Add to Cart
+                  </button>
 
 
-                <button
-                  type="button"
-                  className="buy-now-btn"
-                  onClick={handleBuyNow}
-                >
-                  <i className="bi bi-bag-check"></i>
-                  Buy Now
-                </button>
+                  <button
+                    type="button"
+                    className="buy-now-btn"
+                    onClick={handleBuyNow}
+                  >
+                    <i className="bi bi-bag-check"></i>
+                    Buy Now
+                  </button>
 
-              </div>
+                </div>
+              )}
 
 
               {/* ========================================

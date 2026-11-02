@@ -240,27 +240,15 @@ function Checkout() {
        CUSTOMER DATA
     ========================== */
 
-    
-const customerData = {
-  name: formData.name.trim(),
-  email: formData.email.trim(),
-  house: formData.house.trim(),
-  street: formData.street.trim(),
-  area: formData.area.trim(),
-  city: formData.city.trim(),
-  pincode: formData.pincode.trim(),
-};
-
-const deliveryAddress = [
-  customerData.house,
-  customerData.street,
-  customerData.area,
-  customerData.city,
-  customerData.pincode,
-]
-  .filter(Boolean)
-  .join(", ");
-
+    const customerData = {
+      name: formData.name,
+      email: formData.email,
+      house: formData.house,
+      street: formData.street,
+      area: formData.area,
+      city: formData.city,
+      pincode: formData.pincode,
+    };
 
 
     /* =========================
@@ -271,19 +259,16 @@ const deliveryAddress = [
        for display / demo mode.
     ========================== */
 
-    
-const orderData = {
-  deliveryAddress,
-  mobile,
-  customer: customerData,
-  items: cartItems,
-  subtotal,
-  deliveryCharge,
-  total,
-  deliverySlot,
-  paymentMethod,
-};
-
+    const orderData = {
+      mobile,
+      customer: customerData,
+      items: cartItems,
+      subtotal,
+      deliveryCharge,
+      total,
+      deliverySlot,
+      paymentMethod,
+    };
 
 
     setSubmitting(true);

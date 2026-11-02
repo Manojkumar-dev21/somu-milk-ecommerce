@@ -609,3 +609,50 @@
     text-align: center;
   }
 }
+
+
+/* =====================================================
+   OUT OF STOCK STYLES
+===================================================== */
+
+.product-card.is-out-of-stock {
+  opacity: 0.88;
+}
+
+.product-card.is-out-of-stock:hover {
+  transform: translateY(-2px);
+}
+
+.product-image-box {
+  position: relative;
+}
+
+.out-of-stock-pill {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(211, 47, 47, 0.95);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.35);
+  display: inline-flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.product-actions.out-of-stock-actions {
+  grid-template-columns: 1fr !important;
+}
+
+.add-cart-btn.disabled-btn {
+  background: #ececec !important;
+  color: #888888 !important;
+  border: 1px solid #dcdcdc !important;
+  cursor: not-allowed !important;
+  width: 100%;
+}

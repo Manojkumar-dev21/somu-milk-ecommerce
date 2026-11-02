@@ -47,6 +47,12 @@ function Home() {
     reload: reloadPopular,
   } = useAsync(getPopularProducts, []);
 
+  useEffect(() => {
+    const handleUpdate = () => reloadPopular();
+    window.addEventListener("somu:products-updated", handleUpdate);
+    return () => window.removeEventListener("somu:products-updated", handleUpdate);
+  }, [reloadPopular]);
+
   const { data: reviewData } = useAsync(getReviews, []);
 
   const popularProducts = popularData || [];
@@ -234,21 +240,33 @@ function Home() {
 
           <div className="row g-4">
 
-            {popularProducts.map((product) => (
+            {popularProducts.map((product) => {
+              const isOutOfStock =
+                (product.stock !== undefined && Number(product.stock) <= 0) ||
+                product.isAvailable === false;
+
+              return (
 
               <div
                 className="col-12 col-sm-6 col-lg-3"
                 key={product.id}
               >
 
-                <div className="product-card">
+                <div className={`product-card ${isOutOfStock ? "opacity-75" : ""}`}>
 
-                  <div className="product-image-wrapper">
+                  <div className="product-image-wrapper position-relative">
 
                     <img
                       src={product.image}
                       alt={product.name}
                     />
+
+                    {isOutOfStock && (
+                      <span className="out-of-stock-pill">
+                        <i className="bi bi-slash-circle me-1"></i>
+                        Out of Stock
+                      </span>
+                    )}
 
                   </div>
 
@@ -273,9 +291,9 @@ function Home() {
 
                       <Link
                         to={`/products/${product.id}`}
-                        className="product-view-btn"
+                        className={`product-view-btn ${isOutOfStock ? "bg-secondary text-white" : ""}`}
                       >
-                        View
+                        {isOutOfStock ? "Details" : "View"}
                         <i className="bi bi-arrow-right ms-1"></i>
                       </Link>
 
@@ -287,7 +305,7 @@ function Home() {
 
               </div>
 
-            ))}
+            );})}
 
           </div>
 

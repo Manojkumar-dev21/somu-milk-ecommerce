@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./ProductManagement.css";
+import { getStockOverrides, setProductStock } from "../../../services/productService";
 
 function ProductManagement() {
   const [search, setSearch] = useState("");
@@ -30,8 +31,8 @@ function ProductManagement() {
       category: "Milk Products",
       size: "200 ml / 500 ml / 1 L",
       price: "₹25 - ₹100",
-      stock: 48,
-      status: "Active",
+      stock: 0,
+      status: "Out of Stock",
     },
     {
       id: 4,
@@ -111,10 +112,44 @@ function ProductManagement() {
       category: "Others",
       size: "100 ml / 500 ml / 1 L",
       price: "₹40 - ₹280",
-      stock: 7,
-      status: "Active",
+      stock: 0,
+      status: "Out of Stock",
     },
   ]);
+
+  // Sync with persisted stock overrides
+  useEffect(() => {
+    const overrides = getStockOverrides();
+    if (Object.keys(overrides).length > 0) {
+      setProducts((prev) =>
+        prev.map((p) => {
+          const ov = overrides[String(p.id)];
+          if (ov) {
+            return {
+              ...p,
+              stock: ov.stock,
+              status: ov.stock > 0 ? "Active" : "Out of Stock",
+            };
+          }
+          return p;
+        })
+      );
+    }
+  }, []);
+
+  const toggleStock = (id) => {
+    setProducts((prev) =>
+      prev.map((p) => {
+        if (p.id === id) {
+          const newStock = p.stock > 0 ? 0 : 50;
+          const newStatus = newStock > 0 ? "Active" : "Out of Stock";
+          setProductStock(id, newStock, newStock > 0);
+          return { ...p, stock: newStock, status: newStatus };
+        }
+        return p;
+      })
+    );
+  };
 
   const [showForm, setShowForm] = useState(false);
 
@@ -465,6 +500,17 @@ function ProductManagement() {
 
                     <td>
                       <div className="action-buttons">
+
+                        <button
+                          className={`stock-toggle-btn ${product.stock > 0 ? "in-stock" : "out-of-stock"}`}
+                          title={product.stock > 0 ? "Click to Mark Out of Stock" : "Click to Restock"}
+                          onClick={() => toggleStock(product.id)}
+                        >
+                          <i className={`bi ${product.stock > 0 ? "bi-toggle-on text-success" : "bi-toggle-off text-danger"}`}></i>
+                          <span className="toggle-label ms-1">
+                            {product.stock > 0 ? "In Stock" : "Out of Stock"}
+                          </span>
+                        </button>
 
                         <button
                           className="edit-btn"

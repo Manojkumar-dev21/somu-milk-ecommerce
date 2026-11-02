@@ -1,113 +1,93 @@
-
 import { USE_MOCK } from "../config";
 import { api, unwrap, withId, delay } from "./api";
 import * as seed from "../data/seed";
 
-function extractList(response, key) {
-  const data = unwrap(response);
+const STOCK_KEY = "somu_stock_overrides";
 
-  if (Array.isArray(data)) return data;
-  if (Array.isArray(data?.[key])) return data[key];
-
-  return [];
+export function getStockOverrides() {
+  try {
+    return JSON.parse(localStorage.getItem(STOCK_KEY)) || {};
+  } catch {
+    return {};
+  }
 }
 
-function normalizeCategory(category = "") {
-  const value = String(category).trim().toLowerCase();
-
-  if (["milk", "milk products"].includes(value)) {
-    return "Milk Products";
+export function setProductStock(productId, stock, isAvailable = undefined) {
+  try {
+    const overrides = getStockOverrides();
+    const available = isAvailable !== undefined ? isAvailable : Number(stock) > 0;
+    overrides[String(productId)] = { stock: Number(stock), isAvailable: available };
+    localStorage.setItem(STOCK_KEY, JSON.stringify(overrides));
+    window.dispatchEvent(new CustomEvent("somu:products-updated"));
+    return overrides[String(productId)];
+  } catch (err) {
+    console.error("Failed to update stock", err);
   }
-
-  if (
-    ["curd", "yogurt", "yoghurt", "fermented", "fermented products"].includes(value)
-  ) {
-    return "Fermented Products";
-  }
-
-  if (
-    ["butter", "ghee", "cream", "fat-based products"].includes(value)
-  ) {
-    return "Fat-Based Products";
-  }
-
-  return "Others";
 }
 
-function normalizeProduct(product) {
-  const item = withId(product);
-  const quantity = item.quantity;
-  const unit = item.unit || "";
-  const sizeLabel = [quantity, unit].filter(Boolean).join(" ");
-
-  return {
-    ...item,
-    id: String(item.id ?? item._id),
-    name: item.name || "Dairy Product",
-    description: item.description || "",
-    category: normalizeCategory(item.category),
-    image: item.image || "",
-    sizes: Array.isArray(item.sizes) && item.sizes.length > 0
-      ? item.sizes
-      : [
-          {
-            size: sizeLabel || "Standard",
-            price: Number(item.price) || 0,
-          },
-        ],
-  };
+function applyStockOverrides(productList) {
+  const overrides = getStockOverrides();
+  return productList.map((item) => {
+    const override = overrides[String(item.id)];
+    if (override) {
+      return {
+        ...item,
+        stock: override.stock,
+        isAvailable: override.isAvailable,
+      };
+    }
+    const stock = item.stock !== undefined ? Number(item.stock) : 25;
+    const isAvailable =
+      item.isAvailable !== undefined ? Boolean(item.isAvailable) : stock > 0;
+    return {
+      ...item,
+      stock,
+      isAvailable,
+    };
+  });
 }
 
 export async function getProducts() {
   if (USE_MOCK) {
-    await delay();
-    return seed.products;
+    await delay(100);
+    return applyStockOverrides(seed.products);
   }
+  const list = unwrap(await api.get("/products", { auth: false }));
 
-  const response = await api.get("/products", { auth: false });
-  const list = extractList(response, "products");
+  // Only keep products that have at least one size/price to show
+  const filtered = list
+    .map(withId)
+    .filter((item) => Array.isArray(item.sizes) && item.sizes.length > 0);
 
-  return list
-    .map(normalizeProduct)
-    .filter((item) => item.sizes.length > 0);
+  return applyStockOverrides(filtered);
 }
 
 export async function getProduct(id) {
   const products = await getProducts();
-
   return products.find((item) => String(item.id) === String(id)) || null;
 }
 
 export async function getPopularProducts() {
   if (USE_MOCK) {
-    await delay();
-    return seed.popularProducts;
+    await delay(100);
+    return applyStockOverrides(seed.popularProducts);
   }
-
-  const response = await api.get("/products/popular", { auth: false });
-
-  return extractList(response, "products")
-    .map(normalizeProduct);
+  const list = unwrap(await api.get("/products/popular", { auth: false })).map(withId);
+  return applyStockOverrides(list);
 }
 
 export async function getOffers() {
   if (USE_MOCK) {
-    await delay();
+    await delay(100);
     return seed.offers;
   }
-
-  const response = await api.get("/offers", { auth: false });
-
-  return extractList(response, "offers").map(withId);
+  return unwrap(await api.get("/offers", { auth: false })).map(withId);
 }
 
 export async function getReviews() {
   if (USE_MOCK) {
-    await delay();
+    await delay(100);
     return seed.reviews;
   }
-
-  const response = await api.get("/reviews", { auth: false });
-
-  return extractList(response, "reviews").map(withId);
+  return unwrap(await api.get("/reviews", { auth: false })).map(withId);
 }

@@ -1,9 +1,11 @@
 
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Account.css";
 import { useAuth } from "../../../context/AuthContext";
 import { useAsync } from "../../../hooks/useAsync";
 import { getMyOrders } from "../../../services/orderService";
+import { triggerSubscriptionNotification } from "../../../services/notificationService";
 import { PageLoader, ErrorMessage } from "../../../components/Status/Status";
 
 function Account() {
@@ -11,6 +13,59 @@ function Account() {
 
   // The logged-in customer (the page itself is protected in App.jsx)
   const { user: customer, logout } = useAuth();
+  const [toastMsg, setToastMsg] = useState("");
+
+  const [subscriptions, setSubscriptions] = useState(() => {
+    try {
+      const saved = localStorage.getItem("somu_customer_subscriptions");
+      if (saved) return JSON.parse(saved);
+    } catch {}
+    return [
+      {
+        id: "SUB-101",
+        name: "Daily Fresh Cow Milk",
+        size: "1 L",
+        frequency: "Daily",
+        timeSlot: "6:00 AM – 7:30 AM",
+        price: 65,
+        status: "Active",
+        nextDelivery: "Tomorrow at 6:30 AM",
+      },
+      {
+        id: "SUB-102",
+        name: "Pure Farm Curd",
+        size: "500 g",
+        frequency: "Alternate Days",
+        timeSlot: "6:00 AM – 7:30 AM",
+        price: 45,
+        status: "Active",
+        nextDelivery: "Wednesday at 7:00 AM",
+      },
+    ];
+  });
+
+  const toggleSubscription = (id) => {
+    setSubscriptions((prev) => {
+      const updated = prev.map((sub) => {
+        if (sub.id === id) {
+          const nextStatus = sub.status === "Active" ? "Paused" : "Active";
+          triggerSubscriptionNotification(sub.name, nextStatus === "Paused" ? "paused" : "resumed");
+          setToastMsg(
+            nextStatus === "Paused"
+              ? `Delivery for ${sub.name} is paused. You can resume anytime!`
+              : `Delivery for ${sub.name} resumed! Next delivery tomorrow morning.`
+          );
+          setTimeout(() => setToastMsg(""), 3500);
+          return { ...sub, status: nextStatus };
+        }
+        return sub;
+      });
+      try {
+        localStorage.setItem("somu_customer_subscriptions", JSON.stringify(updated));
+      } catch {}
+      return updated;
+    });
+  };
 
   const {
     data: orderData,
@@ -45,6 +100,13 @@ function Account() {
 
   return (
     <div className="account-page">
+      {/* Toast */}
+      {toastMsg && (
+        <div className="account-live-toast">
+          <i className="bi bi-bell-fill"></i>
+          <span>{toastMsg}</span>
+        </div>
+      )}
 
       {/* =========================================
           ACCOUNT HEADER
@@ -349,12 +411,22 @@ function Account() {
                         {"\u20b9"}{order.total}
                       </strong>
 
-                      <Link
-                        to={`/order-success?order=${encodeURIComponent(order.orderNumber)}`}
-                        className="order-history-link"
-                      >
-                        View
-                      </Link>
+                      <div className="order-history-actions">
+                        <Link
+                          to={`/track/${order.orderNumber}`}
+                          className="order-track-btn"
+                          title="Track order live"
+                        >
+                          <i className="bi bi-geo-alt-fill me-1"></i>
+                          Track
+                        </Link>
+                        <Link
+                          to={`/order-success?order=${encodeURIComponent(order.orderNumber)}`}
+                          className="order-history-link"
+                        >
+                          View
+                        </Link>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -408,28 +480,108 @@ function Account() {
 
             <div className="detail-content">
 
-              <div className="empty-detail">
+              {subscriptions.length > 0 ? (
+                <div className="subscription-cards-list">
+                  {subscriptions.map((sub) => (
+                    <div
+                      key={sub.id}
+                      className={`subscription-item-card ${
+                        sub.status === "Paused" ? "paused-card" : "active-card"
+                      }`}
+                    >
+                      <div className="sub-card-header">
+                        <div className="sub-title-info">
+                          <div className="sub-icon-badge">
+                            <i className="bi bi-droplet-half"></i>
+                          </div>
+                          <div>
+                            <h4>{sub.name}</h4>
+                            <span className="sub-meta-pill">
+                              {sub.size} &bull; {sub.frequency}
+                            </span>
+                          </div>
+                        </div>
 
-                <div className="empty-detail-icon">
-                  <i className="bi bi-cup-straw"></i>
+                        <span
+                          className={`sub-status-pill ${
+                            sub.status === "Paused" ? "paused" : "active"
+                          }`}
+                        >
+                          <i
+                            className={`bi ${
+                              sub.status === "Paused"
+                                ? "bi-pause-circle-fill"
+                                : "bi-check-circle-fill"
+                            } me-1`}
+                          ></i>
+                          {sub.status}
+                        </span>
+                      </div>
+
+                      <div className="sub-card-body">
+                        <div className="sub-detail-row">
+                          <span className="sub-label">Delivery Slot:</span>
+                          <strong>{sub.timeSlot}</strong>
+                        </div>
+                        <div className="sub-detail-row">
+                          <span className="sub-label">Next Delivery:</span>
+                          <strong>
+                            {sub.status === "Paused"
+                              ? "Deliveries Paused"
+                              : sub.nextDelivery}
+                          </strong>
+                        </div>
+                        <div className="sub-detail-row">
+                          <span className="sub-label">Price per Day:</span>
+                          <strong>₹{sub.price}</strong>
+                        </div>
+                      </div>
+
+                      <div className="sub-card-actions">
+                        <button
+                          type="button"
+                          className={`sub-toggle-btn ${
+                            sub.status === "Active" ? "btn-pause" : "btn-resume"
+                          }`}
+                          onClick={() => toggleSubscription(sub.id)}
+                        >
+                          <i
+                            className={`bi ${
+                              sub.status === "Active"
+                                ? "bi-pause-fill"
+                                : "bi-play-fill"
+                            } me-1`}
+                          ></i>
+                          {sub.status === "Active"
+                            ? "Pause Deliveries"
+                            : "Resume Deliveries"}
+                        </button>
+                        <Link
+                          to="/account/notifications"
+                          className="sub-manage-link"
+                        >
+                          View Logs
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-
-                <h3>No Active Dairy Plan</h3>
-
-                <p>
-                  Create a regular milk or dairy delivery plan for
-                  daily, weekly or monthly delivery.
-                </p>
-
-                <Link
-                  to="/products"
-                  className="detail-action-btn"
-                >
-                  <i className="bi bi-plus-circle"></i>
-                  Create Dairy Plan
-                </Link>
-
-              </div>
+              ) : (
+                <div className="empty-detail">
+                  <div className="empty-detail-icon">
+                    <i className="bi bi-cup-straw"></i>
+                  </div>
+                  <h3>No Active Dairy Plan</h3>
+                  <p>
+                    Create a regular milk or dairy delivery plan for
+                    daily, weekly or monthly delivery.
+                  </p>
+                  <Link to="/products" className="detail-action-btn">
+                    <i className="bi bi-plus-circle"></i>
+                    Create Dairy Plan
+                  </Link>
+                </div>
+              )}
 
             </div>
           </section>

@@ -168,3 +168,4 @@ VALUES
 (2, 'Suresh Narayanan', 5, 'Best Paneer in town. Soft, fresh and natural without preservatives.', '1 week ago'),
 (3, 'Anand M.', 5, 'The pure cow ghee aroma reminds me of village farm fresh ghee. Superb quality!', '2 weeks ago')
 ON CONFLICT (id) DO NOTHING;
+

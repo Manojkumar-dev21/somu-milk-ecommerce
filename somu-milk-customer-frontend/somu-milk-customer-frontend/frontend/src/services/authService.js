@@ -88,11 +88,7 @@ export async function register({ name, email, mobile, password }) {
     return { token: `mock.${user.id}`, user: publicUser(user) };
   }
 
-  return api.post(
-    "/auth/customer/register",
-    { name, email, mobile, password },
-    { auth: false }
-  );
+  return api.post("/auth/register", { name, email, mobile, password }, { auth: false });
 }
 
 export async function login({ email, password }) {
@@ -109,30 +105,7 @@ export async function login({ email, password }) {
     return { token: `mock.${found.id}`, user: publicUser(found) };
   }
 
-
-const response = await api.post(
-  "/auth/customer/login",
-  { email, password },
-  { auth: false }
-);
-
-const customer = response?.customer ?? response?.user;
-const token = response?.token;
-
-if (!token || !customer) {
-  throw new ApiError("Invalid login response from server.", 500);
-}
-
-return {
-  token,
-  user: {
-    ...customer,
-    id: customer.id ?? customer._id,
-    mobile: customer.mobile ?? customer.phone ?? "",
-    role: customer.role ?? "customer",
-  },
-};
-
+  return api.post("/auth/login", { email, password }, { auth: false });
 }
 
 export async function getCurrentUser() {

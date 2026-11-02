@@ -8,3 +8,4 @@
     "start": "npm --prefix somu-milk-admin-connected-enhanced/somu-milk-admin-live-design/somu-milk-admin-redesign/somu-milk-enhanced/frontend run preview"
   }
 }
+

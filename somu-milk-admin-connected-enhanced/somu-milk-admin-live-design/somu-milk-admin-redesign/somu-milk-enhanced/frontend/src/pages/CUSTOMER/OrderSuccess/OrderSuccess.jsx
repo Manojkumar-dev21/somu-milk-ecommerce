@@ -405,8 +405,17 @@ function OrderSuccess() {
           <div className="success-actions">
 
             <Link
-              to="/products"
+              to={`/track/${order.orderNumber}`}
               className="success-primary-btn"
+              style={{ background: "#1b5e20", border: "none" }}
+            >
+              <i className="bi bi-geo-alt-fill me-1"></i>
+              Track Live Delivery
+            </Link>
+
+            <Link
+              to="/products"
+              className="success-secondary-btn"
             >
               <i className="bi bi-shop"></i>
               Continue Shopping

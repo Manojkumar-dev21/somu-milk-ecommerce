@@ -14,6 +14,7 @@ import OrderSuccess from "./pages/CUSTOMER/OrderSuccess/OrderSuccess";
 import Login from "./pages/CUSTOMER/Login/Login";
 import Account from "./pages/CUSTOMER/Account/Account";
 import Notifications from "./pages/CUSTOMER/Notifications/Notifications";
+import TrackOrder from "./pages/CUSTOMER/TrackOrder/TrackOrder";
 import Register from "./pages/CUSTOMER/Register/Register";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
@@ -43,6 +44,9 @@ function App() {
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/offers" element={<Offers />} />
+            <Route path="/track" element={<TrackOrder />} />
+            <Route path="/track/:orderNumber" element={<TrackOrder />} />
+            <Route path="/notifications" element={<Notifications />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

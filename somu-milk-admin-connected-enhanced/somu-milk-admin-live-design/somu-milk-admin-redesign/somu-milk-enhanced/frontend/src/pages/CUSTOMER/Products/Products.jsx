@@ -53,6 +53,13 @@ function Products() {
     reload,
   } = useAsync(getProducts, []);
 
+  // Listen for admin stock updates
+  useEffect(() => {
+    const handleUpdate = () => reload();
+    window.addEventListener("somu:products-updated", handleUpdate);
+    return () => window.removeEventListener("somu:products-updated", handleUpdate);
+  }, [reload]);
+
   const products = productList || [];
 
   const initialCategory = searchParams.get("category");
@@ -170,16 +177,16 @@ function Products() {
   ) => {
     event.stopPropagation();
 
+    if (product.stock <= 0 || product.isAvailable === false) {
+      showToast(`${product.name} is currently out of stock`);
+      return;
+    }
+
     const selectedSize =
       getSelectedSize(product);
 
     const cartItem =
       createCartItem(product);
-
-    /*
-      No login / email / OTP required here.
-      New visitors can also add products.
-    */
 
     addToCart(cartItem, 1);
 
@@ -198,14 +205,13 @@ function Products() {
   ) => {
     event.stopPropagation();
 
+    if (product.stock <= 0 || product.isAvailable === false) {
+      showToast(`${product.name} is currently out of stock`);
+      return;
+    }
+
     const cartItem =
       createCartItem(product);
-
-    /*
-      Buy Now also works for new visitors.
-      Customer details will be collected
-      later during checkout.
-    */
 
     addToCart(cartItem, 1);
 
@@ -389,11 +395,14 @@ function Products() {
 
               const selectedSize =
                 getSelectedSize(product);
+              const isOutOfStock =
+                (product.stock !== undefined && Number(product.stock) <= 0) ||
+                product.isAvailable === false;
 
               return (
 
                 <div
-                  className="product-card"
+                  className={`product-card ${isOutOfStock ? "is-out-of-stock" : ""}`}
                   key={product.id}
                   onClick={() =>
                     handleProductClick(
@@ -410,6 +419,13 @@ function Products() {
                       src={product.image}
                       alt={product.name}
                     />
+
+                    {isOutOfStock && (
+                      <span className="out-of-stock-pill">
+                        <i className="bi bi-slash-circle me-1"></i>
+                        Out of Stock
+                      </span>
+                    )}
 
                   </div>
 
@@ -486,37 +502,51 @@ function Products() {
 
                     {/* ACTION BUTTONS */}
 
-                    <div className="product-actions">
+                    {isOutOfStock ? (
+                      <div className="product-actions out-of-stock-actions">
+                        <button
+                          type="button"
+                          className="add-cart-btn disabled-btn"
+                          disabled
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <i className="bi bi-slash-circle me-1"></i>
+                          Out of Stock
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="product-actions">
 
-                      <button
-                        className="add-cart-btn"
-                        onClick={(event) =>
-                          handleAddToCart(
-                            event,
-                            product
-                          )
-                        }
-                      >
+                        <button
+                          className="add-cart-btn"
+                          onClick={(event) =>
+                            handleAddToCart(
+                              event,
+                              product
+                            )
+                          }
+                        >
 
-                        <i className="bi bi-cart-plus"></i>
+                          <i className="bi bi-cart-plus"></i>
 
-                        Add to Cart
+                          Add to Cart
 
-                      </button>
+                        </button>
 
-                      <button
-                        className="buy-now-btn"
-                        onClick={(event) =>
-                          handleBuyNow(
-                            event,
-                            product
-                          )
-                        }
-                      >
-                        Buy Now
-                      </button>
+                        <button
+                          className="buy-now-btn"
+                          onClick={(event) =>
+                            handleBuyNow(
+                              event,
+                              product
+                            )
+                          }
+                        >
+                          Buy Now
+                        </button>
 
-                    </div>
+                      </div>
+                    )}
 
                     {/* DETAILS */}
 

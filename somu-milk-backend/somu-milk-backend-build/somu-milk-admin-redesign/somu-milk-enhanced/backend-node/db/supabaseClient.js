@@ -28,3 +28,4 @@ module.exports = {
   supabase,
   isSupabaseConfigured,
 };
+

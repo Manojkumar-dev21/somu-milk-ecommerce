@@ -32,6 +32,8 @@ export const products = [
     image: milkImg,
     description:
       "Fresh farm milk collected daily and delivered with natural taste and goodness.",
+    stock: 45,
+    isAvailable: true,
     sizes: [
       { size: "500 ml", price: 35 },
       { size: "1 L", price: 65 },
@@ -46,6 +48,8 @@ export const products = [
     image: milkImg,
     description:
       "Rich and creamy full cream milk suitable for tea, coffee, cooking and daily use.",
+    stock: 32,
+    isAvailable: true,
     sizes: [
       { size: "500 ml", price: 38 },
       { size: "1 L", price: 70 },
@@ -60,6 +64,8 @@ export const products = [
     image: milkImg,
     description:
       "Refreshing flavored milk made with quality dairy ingredients for a delicious drink.",
+    stock: 0,
+    isAvailable: false,
     sizes: [
       { size: "200 ml", price: 25 },
       { size: "500 ml", price: 55 },
@@ -74,6 +80,8 @@ export const products = [
     image: curdImg,
     description:
       "Fresh and creamy curd prepared from quality milk with a smooth texture.",
+    stock: 28,
+    isAvailable: true,
     sizes: [
       { size: "200 g", price: 20 },
       { size: "500 g", price: 45 },
@@ -88,6 +96,8 @@ export const products = [
     image: curdImg,
     description:
       "Light and refreshing buttermilk, perfect for staying cool and refreshed.",
+    stock: 20,
+    isAvailable: true,
     sizes: [
       { size: "200 ml", price: 12 },
       { size: "500 ml", price: 25 },
@@ -102,6 +112,8 @@ export const products = [
     image: curdImg,
     description:
       "Creamy and refreshing lassi prepared from fresh curd for a delicious dairy drink.",
+    stock: 15,
+    isAvailable: true,
     sizes: [
       { size: "200 ml", price: 25 },
       { size: "500 ml", price: 55 },
@@ -116,6 +128,8 @@ export const products = [
     image: butterImg,
     description:
       "Smooth and creamy salted butter made from fresh milk with a rich dairy taste.",
+    stock: 12,
+    isAvailable: true,
     sizes: [
       { size: "100 g", price: 60 },
       { size: "250 g", price: 140 },
@@ -130,6 +144,8 @@ export const products = [
     image: butterImg,
     description:
       "Fresh dairy cream ideal for desserts, cooking, baking and creamy recipes.",
+    stock: 18,
+    isAvailable: true,
     sizes: [
       { size: "100 ml", price: 50 },
       { size: "200 ml", price: 90 },
@@ -144,6 +160,8 @@ export const products = [
     image: gheeImg,
     description:
       "Pure aromatic cow ghee prepared with care for cooking and traditional recipes.",
+    stock: 22,
+    isAvailable: true,
     sizes: [
       { size: "100 ml", price: 80 },
       { size: "500 ml", price: 345 },
@@ -158,6 +176,8 @@ export const products = [
     image: paneerImg,
     description:
       "Soft and fresh paneer prepared from quality milk, perfect for everyday cooking.",
+    stock: 16,
+    isAvailable: true,
     sizes: [
       { size: "200 g", price: 110 },
       { size: "500 g", price: 275 },
@@ -172,6 +192,8 @@ export const products = [
     image: paneerImg,
     description:
       "Creamy and delicious cheese suitable for sandwiches, cooking and snacks.",
+    stock: 14,
+    isAvailable: true,
     sizes: [
       { size: "100 g", price: 70 },
       { size: "200 g", price: 130 },
@@ -186,6 +208,8 @@ export const products = [
     image: icecreamImg,
     description:
       "Creamy and delicious milk ice cream made for a refreshing family treat.",
+    stock: 0,
+    isAvailable: false,
     sizes: [
       { size: "100 ml", price: 40 },
       { size: "500 ml", price: 160 },
