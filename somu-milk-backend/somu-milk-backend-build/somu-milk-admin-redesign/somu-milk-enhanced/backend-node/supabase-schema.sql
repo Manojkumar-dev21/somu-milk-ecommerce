@@ -116,13 +116,28 @@ ALTER TABLE public.offers ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.reviews ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.notifications ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Allow public read access on products" ON public.products;
 CREATE POLICY "Allow public read access on products" ON public.products FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Allow public access on customers" ON public.customers;
 CREATE POLICY "Allow public access on customers" ON public.customers FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Allow public access on admins" ON public.admins;
 CREATE POLICY "Allow public access on admins" ON public.admins FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Allow public access on orders" ON public.orders;
 CREATE POLICY "Allow public access on orders" ON public.orders FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Allow public access on subscriptions" ON public.subscriptions;
 CREATE POLICY "Allow public access on subscriptions" ON public.subscriptions FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Allow public access on offers" ON public.offers;
 CREATE POLICY "Allow public access on offers" ON public.offers FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Allow public access on reviews" ON public.reviews;
 CREATE POLICY "Allow public access on reviews" ON public.reviews FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Allow public access on notifications" ON public.notifications;
 CREATE POLICY "Allow public access on notifications" ON public.notifications FOR ALL USING (true);
 
 -- ========================================================
