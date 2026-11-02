@@ -1,23 +1,48 @@
 const db = require("../db/database");
+const { supabase, isSupabaseConfigured } = require("../db/supabaseClient");
 
 // GET /api/products
 const getProducts = async (req, res) => {
   try {
+    if (isSupabaseConfigured()) {
+      const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .order("id", { ascending: true });
+      if (!error && Array.isArray(data) && data.length > 0) {
+        const formatted = data.map((item) => ({
+          ...item,
+          isAvailable: item.is_available !== undefined ? item.is_available : true,
+          sizes: typeof item.sizes === "string" ? JSON.parse(item.sizes) : item.sizes || [],
+        }));
+        return res.status(200).json(formatted);
+      }
+    }
     const products = db.collection("products").find();
-    // Return array directly OR object with data property for maximum frontend compatibility
     return res.status(200).json(products);
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: "Failed to fetch products",
-      error: error.message,
-    });
+    const products = db.collection("products").find();
+    return res.status(200).json(products);
   }
 };
 
 // GET /api/products/popular
 const getPopularProducts = async (req, res) => {
   try {
+    if (isSupabaseConfigured()) {
+      const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .limit(4);
+      if (!error && Array.isArray(data) && data.length > 0) {
+        const formatted = data.map((item) => ({
+          ...item,
+          isAvailable: item.is_available !== undefined ? item.is_available : true,
+          sizes: typeof item.sizes === "string" ? JSON.parse(item.sizes) : item.sizes || [],
+        }));
+        return res.status(200).json(formatted);
+      }
+    }
     const products = db.collection("products").find();
     const popular = products.slice(0, 4);
     return res.status(200).json(popular);
@@ -32,6 +57,25 @@ const getPopularProducts = async (req, res) => {
 // GET /api/products/:id
 const getProductById = async (req, res) => {
   try {
+    if (isSupabaseConfigured()) {
+      const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .eq("id", req.params.id)
+        .single();
+      if (!error && data) {
+        const product = {
+          ...data,
+          isAvailable: data.is_available !== undefined ? data.is_available : true,
+          sizes: typeof data.sizes === "string" ? JSON.parse(data.sizes) : data.sizes || [],
+        };
+        return res.status(200).json({
+          success: true,
+          product,
+          data: product,
+        });
+      }
+    }
     const product = db.collection("products").findById(req.params.id);
 
     if (!product) {

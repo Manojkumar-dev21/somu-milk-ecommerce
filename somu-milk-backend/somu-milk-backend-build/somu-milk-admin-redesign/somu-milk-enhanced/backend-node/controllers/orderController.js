@@ -1,4 +1,5 @@
 const db = require("../db/database");
+const { supabase, isSupabaseConfigured } = require("../db/supabaseClient");
 const jwt = require("jsonwebtoken");
 
 const getJwtSecret = () => process.env.JWT_SECRET || "somu_milk_super_secret_jwt_key_2026_dev";
@@ -62,6 +63,29 @@ const placeOrder = async (req, res) => {
       paymentMethod: paymentMethod || "Cash on Delivery",
       orderDate: new Date().toISOString(),
     });
+
+    // Also sync to Supabase Cloud if configured
+    if (isSupabaseConfigured()) {
+      try {
+        await supabase.from("orders").insert({
+          order_number: orderNum,
+          user_id: userId,
+          customer: customer || "Somu Customer",
+          mobile: mobile || "",
+          address: finalAddress,
+          items: items,
+          subtotal: subtotal || orderTotal,
+          delivery_charge: deliveryCharge || 0,
+          total: orderTotal,
+          status: "Placed",
+          delivery_slot: deliverySlot || "Early Morning (6:00 AM - 7:30 AM)",
+          payment_method: paymentMethod || "Cash on Delivery",
+          order_date: new Date().toISOString(),
+        });
+      } catch (sbErr) {
+        console.warn("Supabase order sync warning:", sbErr.message);
+      }
+    }
 
     // Also insert a notification
     db.collection("notifications").insert({
